@@ -1,5 +1,5 @@
 body {
-  background: url("/images/999_result.png");
+  background: url("/images/999.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
@@ -10,7 +10,7 @@ body {
   opacity: 0.8;
 }
 .posts-expand .post-title-link {
-  color: #1b21d2;
+  color: #13d7d7;
 }
 .post-block {
   background: #27e3f8;
@@ -31,7 +31,7 @@ body {
   opacity: 0.8;
 }
 .post-block {
-  background: rgba(255,255,255,0.7) none repeat scroll !important;
+  background: rgba(1,1,1,0.7) none repeat scroll !important;
 }
 .post {
   margin-top: 60px;
@@ -39,4 +39,7 @@ body {
   margin-bottom: 60px;
   -webkit-box-shadow: 0 0 5px #788072;
   -moz-box-shadow: 0 0 5px rgba(95,220,255,0.5);
+}
+.footer-inner {
+  color: #03e7fb;
 }
