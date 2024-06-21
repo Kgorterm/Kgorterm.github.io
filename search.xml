@@ -6,6 +6,21 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
+    <title>Linux 基础</title>
+    <url>/2024/06/21/Linux-%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<p>day01 </p>
+<span id="more"></span>
+
+<p>1、程序的开发流程</p>
+<p>  PM产品经理  需求分析 确认后进入开发阶段<br>$$<br>开发&#x3D;<br>\begin{cases}<br>ue 交互设计并审评\<br>ui 根据ue做设计\<br>FE 做页面开发前端开发(客户端：web界面，手机app，微信小程序) \<br>RD 技术方案，后端开发，定好接口规范\<br>QA 设计好测试用例&#x2F;评审\<br>OP 运维设计好整套系统的架构\<br>\end{cases}<br>$$<br>2、项目测试<br>$$<br>开发自测-提供bug给测试-产品第一次验收<br>$$<br>3、项目上阶段<br>$$<br>\left.<br>\begin{matrix}<br>1.上线计划填写\<br>2.上线准备工作\<br>3.上线\<br>\end{matrix}<br>\right}<br>-上线功能回测-产品第二次验收<br>$$</p>
+<p>$$<br>运维主要内容<br>\begin{cases}<br>应用程序7<em>24</em>365不间断运行&#x3D;监控\<br>数据异地备份&#x3D;磁带，磁盘\<br>优化&#x3D;操作系统 计算机硬件 网络 安全\<br>\end{cases}<br>$$</p>
+<p>行间公式$O(f(n))&#x3D;log_2^{n}$测试</p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ENSP</title>
     <url>/2024/06/17/ENSP/</url>
     <content><![CDATA[<h2 id="ENSP的基本配置"><a href="#ENSP的基本配置" class="headerlink" title="ENSP的基本配置"></a>ENSP的基本配置</h2><p>consle、telnet、vlan间通信、链路聚合</p>
@@ -110,6 +125,34 @@
       </tags>
   </entry>
   <entry>
+    <title>shell基础</title>
+    <url>/2024/06/21/shell%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h2 id="操作系统的启动流程"><a href="#操作系统的启动流程" class="headerlink" title="操作系统的启动流程"></a>操作系统的启动流程</h2><h3 id="安全优化"><a href="#安全优化" class="headerlink" title="安全优化"></a>安全优化</h3><p>$$<br>\begin{cases}<br>单用户模式 破解密码\<br>grub加密\<br>光盘修复模式&#x2F;救援模式 修复操作系统的问题\<br>BIOS加密\<br>\end{cases}<br>$$</p>
+<span id="more"></span>
+
+<h3 id="shell基础"><a href="#shell基础" class="headerlink" title="shell基础"></a>shell基础</h3><p>$$<br>\begin{cases}<br>介绍\<br>交互式环境\<br>命令语法\<br>bash解释器特性\<br>命令查找优先级\<br>查看帮助信息\<br>常用命令\<br>\end{cases}<br>$$</p>
+<p>$$<br>文件处理相关命令<br>\begin{cases}<br>目录结构 单根结构\<br>系统目录注解（***）\<br>文件操作基础（增、删、改、查）\<br>查看文件内容、修改文件内容vim、查找文件find\<br>打包压缩、软硬连接<br>\字符处理命令<br>\begin{cases}<br>sort\<br>uniq\<br>cut\<br>tr\<br>wc\<br>\end{cases}<br>\路径<br>\begin{cases}<br>相对路径\<br>绝对路径\<br>\end{cases}<br>\end{cases}<br>$$</p>
+<h2 id="二、操作系统启动流程"><a href="#二、操作系统启动流程" class="headerlink" title="二、操作系统启动流程"></a>二、操作系统启动流程</h2><p>加电<br>启动BIOS，检测启动项目<br>读取启动盘第一个扇区512bytes，包含是mbr主引导记录（446引导程序bootloader-grub）<br>grub启动<br>加载内核<br>$$<br>读取运行级别<br>\begin{cases}<br>0-关机\<br>1-单用户工作，不需要账号密码进入后就是管理员账号，用于系统维护，禁止远程登录\<br>2-多用户状态（没有NFS），没有网络\<br>3-完全多用户（有NFS）登录后进入控制台\<br>4-系统未使用，保留\<br>5-图形GUI模式\<br>6-重启\<br>\end{cases}<br>$$<br>centos7启动的第一个程序systemd，pid-0，启动其他服务</p>
+<h3 id="三、系统密码破解"><a href="#三、系统密码破解" class="headerlink" title="三、系统密码破解"></a>三、系统密码破解</h3><p>1.重启<br>切换第一个模式，并按E（dit）,编辑<br>进入最底层，找到ro rhgb……修改为：\ rw\ init&#x3D;&#x2F;sysroot&#x2F;bin&#x2F;sh<br>按CTRL-X进入单用户模式<br>执行chroot\ &#x2F;sysroot&#x2F;<br>passwd\ root回车输入密码<br>一定要再输入：<br>$$<br>vim\ &#x2F;etc&#x2F;sysconfig&#x2F;selinux<br>$$<br>把selinux修改为disabled#关闭模式<br>2.为了防止其他人进行修改，可以在对grub进行一次加密<br>$$<br>1.执行grub2-setpassword\ 命令\<br>#\ grub2-setpassword\<br>enter\ password<em><strong>\<br>confirm\ password</strong></em>\<br>2.在打开文件&#x2F;boot&#x2F;grub2&#x2F;grub.cfg，找到menuentray开头。找到条目后删除–unrestricted参数\<br>3.reboot重启验证，只有输入账号密码后，才能进入grub菜单修改管理密码<br>$$<br>3.BIOS加密，光盘修复<br>$$<br>\begin{cases}<br>#1、进入bios，从光盘启动\<br>#2、点击troubleshooting\<br>#3、进入界面\ 选择：rescue\ a\ centos\ Linux\ system\<br>#4、进入到rescue选项\ 按enter键\ 选1，其余选项为<br>\begin{cases}<br>1.continue：救援模式程序会自动查找系统中已有的文件系统，并可读写挂载到&#x2F;mnt&#x2F;sysimage目录\<br>2.read-only：会以只读的方式挂载已有的文件系统\<br>3.skip\ to\ sheell：手动挂载\<br>\end{cases}<br>\#5、sh切换bash模式\<br>chroot\ &#x2F;mnt&#x2F;sysimage\<br>#6、执行命令\<br>passwd\ root<br>\end{cases}<br>$$<br>4.扣主板bios电池，锁机柜</p>
+<h2 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h2><h5 id="1、什么是系统命令"><a href="#1、什么是系统命令" class="headerlink" title="1、什么是系统命令"></a>1、什么是系统命令</h5><p>shell解释器对系统接口的封装结果<br>系统命令&#x2F;shell命令-shell解释器-系统接口-内核-硬件</p>
+<h5 id="2、为何要用系统命令"><a href="#2、为何要用系统命令" class="headerlink" title="2、为何要用系统命令"></a>2、为何要用系统命令</h5><p>为了使用计算机</p>
+<h5 id="3、补充"><a href="#3、补充" class="headerlink" title="3、补充"></a>3、补充</h5><p>第一层意思：shell代表的是解释器，是对系统接口的封装，即在系统接口外又加了一层壳，shell只是一种称呼，而bash解释器才是具体的一种shell<br>第二层意思：shell这门编程预言（一堆命令及语法）</p>
+<h5 id="4、-posix（了解）"><a href="#4、-posix（了解）" class="headerlink" title="4、 posix（了解）"></a>4、 posix（了解）</h5><p>posix全称可移植的操作系统接口，posix是一种规范</p>
+<h5 id="5、shell交互式环境"><a href="#5、shell交互式环境" class="headerlink" title="5、shell交互式环境"></a>5、shell交互式环境</h5><p>&#x2F;#-超级管理员用户<br>￥-普通用户提示符<br>~-当前用户的个人文件夹-家目录<br>$$<br>useradd\ egon&#x2F;&#x2F;创建用户\<br>passwd\ egon&#x2F;&#x2F;交互式设置密码\<br>echo\ “123”\ |\ passwd\ –stdin\ egon&#x2F;&#x2F;非交互式\<br>$$</p>
+<h5 id="6、shell命令的语法格式"><a href="#6、shell命令的语法格式" class="headerlink" title="6、shell命令的语法格式"></a>6、shell命令的语法格式</h5><p>命令：就是一个单词，对应着一个功能&#x2F;程序，运行一条命令就启动一个进程<br>选项：对命令的描述，控制命令的具体运行<br>参数：命令的操作对象<br>ps：硬盘知识补充<br>        硬盘-》水桶<br>        分区-》水桶的隔断<br>        挂载点&#x2F;文件夹-》某一个具体的隔断</p>
+<h5 id="7、开始编写shell脚本程序"><a href="#7、开始编写shell脚本程序" class="headerlink" title="7、开始编写shell脚本程序"></a>7、开始编写shell脚本程序</h5><p>先切换到root用户，创建文件，后缀名没有硬性限制，通常以.sh结尾</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@egon ~~]# mkdir -p /a/b</span><br><span class="line">[root@egon ~~]# vim /a/b/hello.sh</span><br><span class="line">[root@egon ~~]# cat /a/b/hello.sh</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">第一个shell小程序</span></span><br><span class="line">echo &quot;hello world!&quot;</span><br></pre></td></tr></table></figure>
+
+<p>1.第一行表示我们选择使用的shell解释器是bash，也可以用：#!&#x2F;usr&#x2F;bin&#x2F;env bash  此外shell的第一行比较特殊，一般以#！开始来指定使用的shell解释的类型<br>2.第二行以#开始，表示本行是注释，注释是对代码的解释说明<br>3.第三行中的echo是Linux中的输出命令</p>
+<h5 id="8、运行shell脚本程序"><a href="#8、运行shell脚本程序" class="headerlink" title="8、运行shell脚本程序"></a>8、运行shell脚本程序</h5><p>运行方式也存在几种</p>
+<h6 id="1-绝对路径"><a href="#1-绝对路径" class="headerlink" title="1.绝对路径"></a>1.绝对路径</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">权限：</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">1，对沿途文件夹有x权限</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">2，对目标文件有r和x权限</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">例</span></span><br><span class="line">[root@egon ~~]# ll -d /a</span><br><span class="line">d--------x. 3 root root 15 11月 15 11:05 /a</span><br><span class="line">[root@egon ~~]# ll -d /a/b</span><br><span class="line">d--------x. 2 root root 18 11月 15 11:06 /a/b</span><br><span class="line">[root@egon ~~]# ll /a/b/hello.sh</span><br><span class="line">-rw-r--r-x. 1 root root 10 11月 15 11:06 /a/b/hello.sh</span><br><span class="line">[root@egon ~~]# su -egon</span><br><span class="line">[egon@egon ~~]$ /a/b/hello.sh</span><br><span class="line">hello world!</span><br><span class="line">[egon@egon ~~]$ </span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2024/06/16/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -126,43 +169,6 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Linux 基础</title>
-    <url>/2024/06/21/Linux-%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<p>day01 </p>
-<span id="more"></span>
-
-<p>1、程序的开发流程</p>
-<p>  PM产品经理  需求分析 确认后进入开发阶段<br>$$<br>开发&#x3D;<br>\begin{cases}<br>ue 交互设计并审评\<br>ui 根据ue做设计\<br>FE 做页面开发前端开发(客户端：web界面，手机app，微信小程序) \<br>RD 技术方案，后端开发，定好接口规范\<br>QA 设计好测试用例&#x2F;评审\<br>OP 运维设计好整套系统的架构\<br>\end{cases}<br>$$<br>2、项目测试<br>$$<br>开发自测-提供bug给测试-产品第一次验收<br>$$<br>3、项目上阶段<br>$$<br>\left.<br>\begin{matrix}<br>1.上线计划填写\<br>2.上线准备工作\<br>3.上线\<br>\end{matrix}<br>\right}<br>-上线功能回测-产品第二次验收<br>$$</p>
-<p>$$<br>运维主要内容<br>\begin{cases}<br>应用程序7<em>24</em>365不间断运行&#x3D;监控\<br>数据异地备份&#x3D;磁带，磁盘\<br>优化&#x3D;操作系统 计算机硬件 网络 安全\<br>\end{cases}<br>$$</p>
-<p>行间公式$O(f(n))&#x3D;log_2^{n}$测试</p>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell基础</title>
-    <url>/2024/06/21/shell%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h2 id="操作系统的启动流程"><a href="#操作系统的启动流程" class="headerlink" title="操作系统的启动流程"></a>操作系统的启动流程</h2><h3 id="安全优化"><a href="#安全优化" class="headerlink" title="安全优化"></a>安全优化</h3><p>$$<br>\begin{cases}<br>单用户模式 破解密码\<br>grub加密\<br>光盘修复模式&#x2F;救援模式 修复操作系统的问题\<br>BIOS加密\<br>\end{cases}<br>$$</p>
-<span id="more"></span>
-
-<h3 id="shell基础"><a href="#shell基础" class="headerlink" title="shell基础"></a>shell基础</h3><p>$$<br>\begin{cases}<br>介绍\<br>交互式环境\<br>命令语法\<br>bash解释器特性\<br>命令查找优先级\<br>查看帮助信息\<br>常用命令\<br>\end{cases}<br>$$</p>
-<p>$$<br>文件处理相关命令<br>\begin{cases}<br>目录结构 单根结构\<br>系统目录注解（***）\<br>文件操作基础（增、删、改、查）\<br>查看文件内容、修改文件内容vim、查找文件find\<br>打包压缩、软硬连接<br>\字符处理命令<br>\begin{cases}<br>sort\<br>uniq\<br>cut\<br>tr\<br>wc\<br>\end{cases}<br>\路径<br>\begin{cases}<br>相对路径\<br>绝对路径\<br>\end{cases}<br>\end{cases}<br>$$</p>
-<h2 id="二、操作系统启动流程"><a href="#二、操作系统启动流程" class="headerlink" title="二、操作系统启动流程"></a>二、操作系统启动流程</h2><p>加电<br>启动BIOS，检测启动项目<br>读取启动盘第一个扇区512bytes，包含是mbr主引导记录（446引导程序bootloader-grub）<br>grub启动<br>加载内核<br>$$<br>读取运行级别<br>\begin{cases}<br>0-关机\<br>1-单用户工作，不需要账号密码进入后就是管理员账号，用于系统维护，禁止远程登录\<br>2-多用户状态（没有NFS），没有网络\<br>3-完全多用户（有NFS）登录后进入控制台\<br>4-系统未使用，保留\<br>5-图形GUI模式\<br>6-重启\<br>\end{cases}<br>$$<br>centos7启动的第一个程序systemd，pid-0，启动其他服务</p>
-<h3 id="三、系统密码破解"><a href="#三、系统密码破解" class="headerlink" title="三、系统密码破解"></a>三、系统密码破解</h3><p>1.重启<br>切换第一个模式，并按E（dit）,编辑<br>进入最底层，找到ro rhgb……修改为：\ rw\ init&#x3D;&#x2F;sysroot&#x2F;bin&#x2F;sh<br>按CTRL-X进入单用户模式<br>执行chroot\ &#x2F;sysroot&#x2F;<br>passwd\ root回车输入密码<br>一定要再输入：<br>$$<br>vim\ &#x2F;etc&#x2F;sysconfig&#x2F;selinux<br>$$<br>把selinux修改为disabled#关闭模式<br>2.为了防止其他人进行修改，可以在对grub进行一次加密<br>$$<br>1.执行grub2-setpassword\ 命令\<br>#\ grub2-setpassword\<br>enter\ password<em><strong>\<br>confirm\ password</strong></em>\<br>2.在打开文件&#x2F;boot&#x2F;grub2&#x2F;grub.cfg，找到menuentray开头。找到条目后删除–unrestricted参数\<br>3.reboot重启验证，只有输入账号密码后，才能进入grub菜单修改管理密码<br>$$<br>3.BIOS加密，光盘修复<br>$$<br>\begin{cases}<br>#1、进入bios，从光盘启动\<br>#2、点击troubleshooting\<br>#3、进入界面\ 选择：rescue\ a\ centos\ Linux\ system\<br>#4、进入到rescue选项\ 按enter键\ 选1，其余选项为<br>\begin{cases}<br>1.continue：救援模式程序会自动查找系统中已有的文件系统，并可读写挂载到&#x2F;mnt&#x2F;sysimage目录\<br>2.read-only：会以只读的方式挂载已有的文件系统\<br>3.skip\ to\ sheell：手动挂载\<br>\end{cases}<br>\#5、sh切换bash模式\<br>chroot\ &#x2F;mnt&#x2F;sysimage\<br>#6、执行命令\<br>passwd\ root<br>\end{cases}<br>$$<br>4.扣主板bios电池，锁机柜</p>
-<h2 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h2><p>1、什么是系统命令<br>shell解释器对系统接口的封装结果<br>系统命令&#x2F;shell命令-shell解释器-系统接口-内核-硬件</p>
-<p>2、为何要用系统命令<br>为了使用计算机</p>
-<p>3、补充<br>第一层意思：shell代表的是解释器，是对系统接口的封装，即在系统接口外又加了一层壳，shell只是一种称呼，而bash解释器才是具体的一种shell<br>第二层意思：shell这门编程预言（一堆命令及语法）</p>
-<p>4、 posix（了解）<br>posix全称可移植的操作系统接口，posix是一种规范</p>
-<p>5、shell交互式环境<br>&#x2F;#-超级管理员用户<br>￥-普通用户提示符<br>~-当前用户的个人文件夹-家目录<br>$$<br>useradd\ egon&#x2F;&#x2F;创建用户\<br>passwd\ egon&#x2F;&#x2F;交互式设置密码\<br>echo\ “123”\ |\ passwd\ –stdin\ egon&#x2F;&#x2F;非交互式\<br>$$</p>
-<p>6、shell命令的语法格式<br>命令：就是一个单词，对应着一个功能&#x2F;程序，运行一条命令就启动一个进程<br>选项：对命令的描述，控制命令的具体运行<br>参数：命令的操作对象<br>ps：硬盘知识补充<br>        硬盘-》水桶<br>        分区-》水桶的隔断<br>        挂载点&#x2F;文件夹-》某一个具体的隔断</p>
-<p>7、开始编写shell脚本程序<br>先切换到root用户</p>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
   </entry>
   <entry>
     <title>友链</title>
