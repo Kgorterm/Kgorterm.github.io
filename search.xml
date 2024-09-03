@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>1</title>
-    <url>/2024/06/16/1/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>ENSP</title>
     <url>/2024/06/17/ENSP/</url>
     <content><![CDATA[<h2 id="ENSP的基本配置"><a href="#ENSP的基本配置" class="headerlink" title="ENSP的基本配置"></a>ENSP的基本配置</h2><p>consle、telnet、vlan间通信、链路聚合</p>
@@ -98,6 +93,14 @@
       </tags>
   </entry>
   <entry>
+    <title>bash</title>
+    <url>/2024/06/16/1/</url>
+    <content><![CDATA[<h1 id="bash解释器特性"><a href="#bash解释器特性" class="headerlink" title="bash解释器特性"></a>bash解释器特性</h1><h4 id="1-命令和文件自动补全-注意：Tab只能补全命令和文件"><a href="#1-命令和文件自动补全-注意：Tab只能补全命令和文件" class="headerlink" title="1 命令和文件自动补全 注意：Tab只能补全命令和文件"></a>1 命令和文件自动补全 注意：Tab只能补全命令和文件</h4>]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux 基础</title>
     <url>/2024/06/21/Linux-%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<p>day01 </p>
@@ -122,6 +125,15 @@
 ]]></content>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>centos</title>
+    <url>/2024/06/23/centos/</url>
+    <content><![CDATA[<h1 id="nginx安装使用"><a href="#nginx安装使用" class="headerlink" title="nginx安装使用"></a>nginx安装使用</h1><p>&#x2F;etc&#x2F;nginx<br>&#x2F;usr&#x2F;share&#x2F;nginx<br>&#x2F;usr&#x2F;lib64&#x2F;nginx<br>&#x2F;var&#x2F;lib&#x2F;nginx</p>
+]]></content>
+      <tags>
+        <tag>centos</tag>
       </tags>
   </entry>
   <entry>
