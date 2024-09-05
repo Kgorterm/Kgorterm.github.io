@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>bash</title>
+    <url>/2024/06/16/1/</url>
+    <content><![CDATA[<h1 id="bash解释器特性"><a href="#bash解释器特性" class="headerlink" title="bash解释器特性"></a>bash解释器特性</h1><h4 id="1-命令和文件自动补全-注意：Tab只能补全命令和文件"><a href="#1-命令和文件自动补全-注意：Tab只能补全命令和文件" class="headerlink" title="1 命令和文件自动补全 注意：Tab只能补全命令和文件"></a>1 命令和文件自动补全 注意：Tab只能补全命令和文件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost aaa]<span class="comment"># ls /etc/sysconfig/network-scripts/ifcfg-ens33</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2快捷键"><a href="#2快捷键" class="headerlink" title="2快捷键"></a>2快捷键</h4><p>^c 终止前台运行的程序<br>^d 退出 等价exit<br>^l 清屏 等价clear<br>^a 光标移至最前<br>^e 光标移至最后<br>Alt+. 取前一条命令的最后一个参数 等价!$</p>
+<h4 id="3历史命令"><a href="#3历史命令" class="headerlink" title="3历史命令"></a>3历史命令</h4><p>查看</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@aaa aaa]<span class="comment">#history</span></span><br></pre></td></tr></table></figure>
+
+<p>清空</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@aaa aaa]<span class="comment">#history -c</span></span><br></pre></td></tr></table></figure>
+
+<p> 历史命令保存文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> ~/.bash.history</span><br></pre></td></tr></table></figure>
+
+<h4 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h4><p>alias xxx&#x3D;‘cat &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33’查看网卡<br>运行xxx(甚至会自动补全) </p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ENSP</title>
     <url>/2024/06/17/ENSP/</url>
     <content><![CDATA[<h2 id="ENSP的基本配置"><a href="#ENSP的基本配置" class="headerlink" title="ENSP的基本配置"></a>ENSP的基本配置</h2><p>consle、telnet、vlan间通信、链路聚合</p>
@@ -93,14 +114,6 @@
       </tags>
   </entry>
   <entry>
-    <title>bash</title>
-    <url>/2024/06/16/1/</url>
-    <content><![CDATA[<h1 id="bash解释器特性"><a href="#bash解释器特性" class="headerlink" title="bash解释器特性"></a>bash解释器特性</h1><h4 id="1-命令和文件自动补全-注意：Tab只能补全命令和文件"><a href="#1-命令和文件自动补全-注意：Tab只能补全命令和文件" class="headerlink" title="1 命令和文件自动补全 注意：Tab只能补全命令和文件"></a>1 命令和文件自动补全 注意：Tab只能补全命令和文件</h4>]]></content>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux 基础</title>
     <url>/2024/06/21/Linux-%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<p>day01 </p>
@@ -134,6 +147,14 @@
 ]]></content>
       <tags>
         <tag>centos</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>bash</title>
+    <url>/2024/06/16/bash/</url>
+    <content><![CDATA[<h1 id="bash解释器特性"><a href="#bash解释器特性" class="headerlink" title="bash解释器特性"></a>bash解释器特性</h1><h4 id="1-命令和文件自动补全-注意：Tab只能补全命令和文件"><a href="#1-命令和文件自动补全-注意：Tab只能补全命令和文件" class="headerlink" title="1 命令和文件自动补全 注意：Tab只能补全命令和文件"></a>1 命令和文件自动补全 注意：Tab只能补全命令和文件</h4>]]></content>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
