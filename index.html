@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -177,6 +177,90 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/09/05/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E6%A1%86%E6%9E%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/T.png">
+      <meta itemprop="name" content="枝江最強聖女と超高校级の可愛!嘉然Dianaです!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="年年岁岁花相似，岁岁年年人不同">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/09/05/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E6%A1%86%E6%9E%B6/" class="post-title-link" itemprop="url">后台管理框架</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-09-05 17:07:28 / Modified: 17:56:36" itemprop="dateCreated datePublished" datetime="2024-09-05T17:07:28+08:00">2024-09-05</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="1安装环境"><a href="#1安装环境" class="headerlink" title="1安装环境"></a>1安装环境</h4><p>docker 用于启动服务<br>安装jdk 用来构建后端项目<br>安装node.js用来构建前端项目</p>
+<h4 id="2克隆项目"><a href="#2克隆项目" class="headerlink" title="2克隆项目"></a>2克隆项目</h4><p>从git仓库下载前后端项目</p>
+<h4 id="3修改配置"><a href="#3修改配置" class="headerlink" title="3修改配置"></a>3修改配置</h4><p>配置中的默认ip地址需要改成正确的主机的ip地址</p>
+<h4 id="4构建项目"><a href="#4构建项目" class="headerlink" title="4构建项目"></a>4构建项目</h4><p>构建后端项目生成各个服务的jar包<br>构建前端项目生成静态站点文件</p>
+<h4 id="5制作镜像"><a href="#5制作镜像" class="headerlink" title="5制作镜像"></a>5制作镜像</h4><p>使用后端项目中带有的dockerfile文件制作镜像</p>
+<p>前端项目自己制作nginx的镜像，添加前端目录</p>
+<h4 id="6部署中间件"><a href="#6部署中间件" class="headerlink" title="6部署中间件"></a>6部署中间件</h4><p>使用docker部署mysql，redis，nacos服务</p>
+<p>挂载卷让数据持久化，并暴露对应的服务端口</p>
+<h4 id="7单节点上启动服务"><a href="#7单节点上启动服务" class="headerlink" title="7单节点上启动服务"></a>7单节点上启动服务</h4><p>使用docker启动前后端服务</p>
+<h4 id="8访问服务"><a href="#8访问服务" class="headerlink" title="8访问服务"></a>8访问服务</h4><p>访问页面，查看服务是否正常</p>
+<h4 id="9上传镜像到镜像仓库"><a href="#9上传镜像到镜像仓库" class="headerlink" title="9上传镜像到镜像仓库"></a>9上传镜像到镜像仓库</h4><p>使用docker tag及docker pull将镜像推送到镜像仓库</p>
+<h4 id="10搭建部署k8s"><a href="#10搭建部署k8s" class="headerlink" title="10搭建部署k8s"></a>10搭建部署k8s</h4><p>使用kubeadm部署1个主节点，2个工作节点的集群</p>
+<h4 id="11在k8s环境中启动服务"><a href="#11在k8s环境中启动服务" class="headerlink" title="11在k8s环境中启动服务"></a>11在k8s环境中启动服务</h4><p>制作yaml将各个服务启动到k8s中</p>
+<p>并配置metallb让k8s能够使局域网ip作为loadbalancer地址</p>
+<p>配置ingress和域名让服务能够通过域名正常访问</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -444,9 +528,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2024-06-21 20:03:06 / Modified: 20:54:31" itemprop="dateCreated datePublished" datetime="2024-06-21T20:03:06+08:00">2024-06-21</time>
+      <time title="Created: 2024-06-21 20:03:06" itemprop="dateCreated datePublished" datetime="2024-06-21T20:03:06+08:00">2024-06-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-09-10 19:33:05" itemprop="dateModified" datetime="2024-09-10T19:33:05+08:00">2024-09-10</time>
     </span>
 
   
@@ -695,7 +785,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-09-05 09:34:09" itemprop="dateModified" datetime="2024-09-05T09:34:09+08:00">2024-09-05</time>
+      <time title="Modified: 2024-09-05 11:33:16" itemprop="dateModified" datetime="2024-09-05T11:33:16+08:00">2024-09-05</time>
     </span>
 
   
@@ -721,7 +811,34 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> ~/.bash.history</span><br></pre></td></tr></table></figure>
 
 <h4 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h4><p>alias xxx&#x3D;‘cat &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33’查看网卡<br>运行xxx(甚至会自动补全) </p>
-<p>1</p>
+<p>另附所有别名</p>
+<p><img src="/2024/06/16/bash/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20093959.png"></p>
+<p>如何取消别名</p>
+<p>首先，查看命令的完整路径 再以完整路径的方式运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> <span class="built_in">ls</span> </span><br></pre></td></tr></table></figure>
+
+<p>再者，就是使用转义字符‘&#39;取消掉别名 例如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\<span class="built_in">ls</span> /boot/</span><br></pre></td></tr></table></figure>
+
+<p>然后，就是unalias</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unalias</span> <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="命令查找优先级："><a href="#命令查找优先级：" class="headerlink" title="命令查找优先级："></a>命令查找优先级：</h4><p>bash，shell查找命令顺序：</p>
+<p>&#x3D;以路径（绝对路径，相对路径）开始命令，例如： </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/bin/ls</span><br><span class="line"><span class="built_in">cd</span> /bin</span><br><span class="line">./ls</span><br></pre></td></tr></table></figure>
+
+<p>&#x3D;alias(别名)<br>&#x3D;Compound Commands(复合命令)</p>
+<p>以简单的for循环为例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>((i=<span class="number">1</span>;i&lt;=<span class="number">3</span>;i++))<span class="keyword">do</span> <span class="built_in">echo</span> 123; <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/06/16/bash/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20100437.png"></p>
+<p>&#x3D;function(函数)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">xxx</span></span>()&#123; <span class="built_in">echo</span> 123;<span class="built_in">echo</span> 456; &#125;</span><br><span class="line">xxx</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/06/16/bash/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20100922.png"></p>
+<p>&#x3D;build_in(内置)</p>
+<p>&#x3D;hash(哈希)</p>
+<p>&#x3D;path(环境变量)</p>
 
       
     </div>
