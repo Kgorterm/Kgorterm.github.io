@@ -3,7 +3,9 @@
   <entry>
     <title>Docker</title>
     <url>/2024/09/21/Docker/</url>
-    <content><![CDATA[<h2 id="1-docker组成"><a href="#1-docker组成" class="headerlink" title="1.docker组成"></a>1.docker组成</h2><h3 id="1-1镜像-Image"><a href="#1-1镜像-Image" class="headerlink" title="1.1镜像(Image)"></a>1.1镜像(Image)</h3><p>docker镜像就好比一个模板，我们可以通过这个模板来创建容器服务，tomcat镜像&#x3D;&gt;run&#x3D;&#x3D;&gt;tomcat01容器（提供服务器），通过这个镜像可以创建多个容器（最终服务运行或者项目运行就是在容器中的）</p>
+    <content><![CDATA[<span id="more"></span>
+
+<h2 id="1-docker组成"><a href="#1-docker组成" class="headerlink" title="1.docker组成"></a>1.docker组成</h2><h3 id="1-1镜像-Image"><a href="#1-1镜像-Image" class="headerlink" title="1.1镜像(Image)"></a>1.1镜像(Image)</h3><p>docker镜像就好比一个模板，我们可以通过这个模板来创建容器服务，tomcat镜像&#x3D;&gt;run&#x3D;&#x3D;&gt;tomcat01容器（提供服务器），通过这个镜像可以创建多个容器（最终服务运行或者项目运行就是在容器中的）</p>
 <h3 id="1-2容器-container"><a href="#1-2容器-container" class="headerlink" title="1.2容器(container)"></a>1.2容器(container)</h3><p>docker利用容器技术，独立运行一个或者一组应用 通过镜像来创建启动，停止，删除，基本命令！<br>目前就可以把这个容器理解为就是一个简易的linux系统</p>
 <h3 id="1-3仓库-repository"><a href="#1-3仓库-repository" class="headerlink" title="1.3仓库(repository)"></a>1.3仓库(repository)</h3><p>存放镜像的地方，也分为公有仓库和私有仓库</p>
 <h2 id="2-docker安装"><a href="#2-docker安装" class="headerlink" title="2.docker安装"></a>2.docker安装</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 1.卸载旧的版本</span><br><span class="line">yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-engine</span><br><span class="line"># 2.需要的安装包</span><br><span class="line">yum install -y yum-utils</span><br><span class="line"># 3.设置镜像的仓库</span><br><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://download.docker.com/linux/centos/docker-ce.repo # 默认是从国外的。</span><br><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo # 推荐使用阿里云的。</span><br><span class="line"># 安装容器之前，更新yum软件包索引。</span><br><span class="line">yum makecache fast</span><br><span class="line"># 4.安装容器相关的。docker-ce（社区版）docker-ee（企业版）</span><br><span class="line">yum install docker-ce docker-ce-cli containerd.io</span><br><span class="line"># 5.启动docker</span><br><span class="line">systemctl start docker</span><br><span class="line"># 6.使用docker version查看是否安装成功</span><br></pre></td></tr></table></figure>
@@ -33,7 +35,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">exit        # 容器直接停止，并退出</span><br><span class="line">ctrl+P+Q    # 容器不停止，退出</span><br><span class="line">[root@JWei_0124 //]# docker run -it centos /bin/bash  //交互式进入</span><br><span class="line">[root@68b68a9576e0 /]# [root@JWei_0124 //]#  //按快捷键 自动输入</span><br><span class="line">[root@JWei_0124 //]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS         PORTS     NAMES</span><br><span class="line">68b68a9576e0   centos    &quot;/bin/bash&quot;   2 minutes ago   Up 2 minutes             peaceful_jemison</span><br><span class="line">[root@JWei_0124 //]# </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>删除容器</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker rm 容器id                    # 删除容器（不能删除正在运行的容器）如果要强制删除：docker rm -f 容器id</span><br><span class="line">docker rm -f $(docker ps -aq)        # 删除全部容器</span><br><span class="line">docker ps -a -q|xargs docker rm        # 删除所有容器</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker stop []#停止容器</span><br><span class="line">docker rm [容器id]                  # 删除容器（不能删除正在运行的容器）如果要强制删除：docker rm -f 容器id</span><br><span class="line">docker rmi []#删除镜像</span><br><span class="line">docker rm -f $(docker ps -aq)        # 删除全部容器</span><br><span class="line">docker ps -a -q|xargs docker rm        # 删除所有容器</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>登录和启动容器</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker start 容器id        # 启动容器</span><br><span class="line">docker restart 容器id    # 重启容器</span><br><span class="line">docker stop 容器id        # 停止当前正在运行的容器</span><br><span class="line">docker kill 容器id        # 强制停止当前容器</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -136,6 +138,22 @@
       </tags>
   </entry>
   <entry>
+    <title>Nginx</title>
+    <url>/2024/10/07/Nginx/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<h1 id="在nginx上配置ssl证书验证"><a href="#在nginx上配置ssl证书验证" class="headerlink" title="在nginx上配置ssl证书验证"></a>在nginx上配置ssl证书验证</h1><p>在Nginx上配置SSL以启用HTTPS连接</p>
+<h2 id="1获取SSL证书"><a href="#1获取SSL证书" class="headerlink" title="1获取SSL证书"></a>1获取SSL证书</h2><p>从项目相关的域名管理找到nginx证书下载</p>
+<h2 id="2备份原有配置"><a href="#2备份原有配置" class="headerlink" title="2备份原有配置"></a>2备份原有配置</h2><p>在修改配置文件之前，备份原有的Nginx配置文件</p>
+<h2 id="3编辑Nginx配置文件并重启服务"><a href="#3编辑Nginx配置文件并重启服务" class="headerlink" title="3编辑Nginx配置文件并重启服务"></a>3编辑Nginx配置文件并重启服务</h2><p>打开配置文件并进行一下修改：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /usr/local/nginx/conf/nginx.conf</span><br><span class="line">server&#123;</span><br><span class="line">listen 80;</span><br><span class="line">server_name wanda.com;#将wanda.com替代为自己域名</span><br><span class="line">return 301 https://$host$request_uri;# 重定向HTTP到HTTPS</span><br><span class="line">&#125;</span><br><span class="line">server&#123;</span><br><span class="line">listen 443 ssl;#监听443端口，并启用SSL </span><br><span class="line">server_name wanda.com;#同样替换域名</span><br><span class="line">ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;#指定证书文件路径</span><br><span class="line">ssl-certificate_key /etc/letsencrypt/live/example.com/prikey.pem;#指定私钥文件</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SSL相关设置，可根据需要调整</span></span><br><span class="line">ssl_protocols TLSv1.2 TLSv1.3;</span><br><span class="line">ssl_prefer_server_ciphers on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux 基础</title>
     <url>/2024/06/21/Linux-%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<p>day01 </p>
@@ -153,22 +171,16 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2024/06/16/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <title>Xshell工具</title>
+    <url>/2024/06/21/Xshell%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<p>day02</p>
+<span id="more"></span>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>一、什么是xshell？<br>xshell是一个远程登录客户端程序，对应的服务端程序openssh-server（默认22）<br>二、为何要用xshell<br>远程管理<br>三、如何使用<br><a href="http://pan.baodi.com/s1NXnnQ1RsQ9RMcRMcWUb">http://pan.baodi.com/s1NXnnQ1RsQ9RMcRMcWUb</a><br>提取码 v3h5<br>下载安装后整体优化如下<br>$$<br>\begin{cases}<br>工具-选项-会话文件夹（指定一个文件夹）,便于管理\<br>工具-选项-更新-取消自动\<br>工具-选项-高级-终端-禁用铃声\<br>右键任务栏\<br>文件-属性-终端-缓冲区大小显示行数（shift+pgup&#x2F;pgdn翻页）\<br>终端-VT模式-普通\<br>高级-禁用更改终端标题\<br>\end{cases}<br>$$<br>四、远程连接排错<br>$$<br>\begin{cases}<br>1.测试网络是否畅通：ping 服务端ip\<br>2.是否被拦截：selinux，firewall防火墙<br>\begin{cases}<br>1.关闭防火墙\<br>systemctl stop firewalld\<br>systemctl disabled firewalld禁止开机自启动\<br>2.关闭selinux\<br>setenforce 1 # enforcing-加载并生效\<br>setenforce 0 # permissive-加载但不生效\<br>             # disabled-不加载\<br>vim &#x2F;etc&#x2F;sysconfig&#x2F;selinux #修改selinux&#x3D;disabeld\<br>查看selinux状态-getenforce\<br>systemctl restart sshd # 开启服务端程序<br>systemctl restart network # 重启服务<br>\end{cases}<br>\end{cases}<br>$$</p>
 ]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
   </entry>
   <entry>
     <title>bash</title>
@@ -220,24 +232,75 @@
       </tags>
   </entry>
   <entry>
-    <title>Xshell工具</title>
-    <url>/2024/06/21/Xshell%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<p>day02</p>
-<span id="more"></span>
-
-<p>一、什么是xshell？<br>xshell是一个远程登录客户端程序，对应的服务端程序openssh-server（默认22）<br>二、为何要用xshell<br>远程管理<br>三、如何使用<br><a href="http://pan.baodi.com/s1NXnnQ1RsQ9RMcRMcWUb">http://pan.baodi.com/s1NXnnQ1RsQ9RMcRMcWUb</a><br>提取码 v3h5<br>下载安装后整体优化如下<br>$$<br>\begin{cases}<br>工具-选项-会话文件夹（指定一个文件夹）,便于管理\<br>工具-选项-更新-取消自动\<br>工具-选项-高级-终端-禁用铃声\<br>右键任务栏\<br>文件-属性-终端-缓冲区大小显示行数（shift+pgup&#x2F;pgdn翻页）\<br>终端-VT模式-普通\<br>高级-禁用更改终端标题\<br>\end{cases}<br>$$<br>四、远程连接排错<br>$$<br>\begin{cases}<br>1.测试网络是否畅通：ping 服务端ip\<br>2.是否被拦截：selinux，firewall防火墙<br>\begin{cases}<br>1.关闭防火墙\<br>systemctl stop firewalld\<br>systemctl disabled firewalld禁止开机自启动\<br>2.关闭selinux\<br>setenforce 1 # enforcing-加载并生效\<br>setenforce 0 # permissive-加载但不生效\<br>             # disabled-不加载\<br>vim &#x2F;etc&#x2F;sysconfig&#x2F;selinux #修改selinux&#x3D;disabeld\<br>查看selinux状态-getenforce\<br>systemctl restart sshd # 开启服务端程序<br>systemctl restart network # 重启服务<br>\end{cases}<br>\end{cases}<br>$$</p>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>centos</title>
     <url>/2024/06/23/centos/</url>
-    <content><![CDATA[<h1 id="nginx安装使用"><a href="#nginx安装使用" class="headerlink" title="nginx安装使用"></a>nginx安装使用</h1><p>&#x2F;etc&#x2F;nginx<br>&#x2F;usr&#x2F;share&#x2F;nginx<br>&#x2F;usr&#x2F;lib64&#x2F;nginx<br>&#x2F;var&#x2F;lib&#x2F;nginx</p>
+    <content><![CDATA[<span id="more"></span>
+
+<h1 id="nginx安装使用"><a href="#nginx安装使用" class="headerlink" title="nginx安装使用"></a>nginx安装使用</h1><p>&#x2F;etc&#x2F;nginx<br>&#x2F;usr&#x2F;share&#x2F;nginx<br>&#x2F;usr&#x2F;lib64&#x2F;nginx<br>&#x2F;var&#x2F;lib&#x2F;nginx</p>
 ]]></content>
       <tags>
         <tag>centos</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2024/06/16/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>shell基础</title>
+    <url>/2024/06/21/shell%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h2 id="操作系统的启动流程"><a href="#操作系统的启动流程" class="headerlink" title="操作系统的启动流程"></a>操作系统的启动流程</h2><h3 id="安全优化"><a href="#安全优化" class="headerlink" title="安全优化"></a>安全优化</h3><p>$$<br>\begin{cases}<br>单用户模式 破解密码\<br>grub加密\<br>光盘修复模式&#x2F;救援模式 修复操作系统的问题\<br>BIOS加密\<br>\end{cases}<br>$$</p>
+<span id="more"></span>
+
+<h3 id="shell基础"><a href="#shell基础" class="headerlink" title="shell基础"></a>shell基础</h3><p>$$<br>\begin{cases}<br>介绍\<br>交互式环境\<br>命令语法\<br>bash解释器特性\<br>命令查找优先级\<br>查看帮助信息\<br>常用命令\<br>\end{cases}<br>$$</p>
+<p>$$<br>文件处理相关命令<br>\begin{cases}<br>目录结构 单根结构\<br>系统目录注解（***）\<br>文件操作基础（增、删、改、查）\<br>查看文件内容、修改文件内容vim、查找文件find\<br>打包压缩、软硬连接<br>\字符处理命令<br>\begin{cases}<br>sort\<br>uniq\<br>cut\<br>tr\<br>wc\<br>\end{cases}<br>\路径<br>\begin{cases}<br>相对路径\<br>绝对路径\<br>\end{cases}<br>\end{cases}<br>$$</p>
+<h2 id="二、操作系统启动流程"><a href="#二、操作系统启动流程" class="headerlink" title="二、操作系统启动流程"></a>二、操作系统启动流程</h2><p>加电<br>启动BIOS，检测启动项目<br>读取启动盘第一个扇区512bytes，包含是mbr主引导记录（446引导程序bootloader-grub）<br>grub启动<br>加载内核<br>$$<br>读取运行级别<br>\begin{cases}<br>0-关机\<br>1-单用户工作，不需要账号密码进入后就是管理员账号，用于系统维护，禁止远程登录\<br>2-多用户状态（没有NFS），没有网络\<br>3-完全多用户（有NFS）登录后进入控制台\<br>4-系统未使用，保留\<br>5-图形GUI模式\<br>6-重启\<br>\end{cases}<br>$$<br>centos7启动的第一个程序systemd，pid-0，启动其他服务</p>
+<h3 id="三、系统密码破解"><a href="#三、系统密码破解" class="headerlink" title="三、系统密码破解"></a>三、系统密码破解</h3><p>1.重启<br>切换第一个模式，并按E（dit）,编辑<br>进入最底层，找到ro rhgb……修改为：\ rw\ init&#x3D;&#x2F;sysroot&#x2F;bin&#x2F;sh<br>按CTRL-X进入单用户模式<br>执行chroot\ &#x2F;sysroot&#x2F;<br>passwd\ root回车输入密码<br>一定要再输入：<br>$$<br>vim\ &#x2F;etc&#x2F;sysconfig&#x2F;selinux<br>$$<br>把selinux修改为disabled#关闭模式<br>2.为了防止其他人进行修改，可以在对grub进行一次加密<br>$$<br>1.执行grub2-setpassword\ 命令\<br>#\ grub2-setpassword\<br>enter\ password<em><strong>\<br>confirm\ password</strong></em>\<br>2.在打开文件&#x2F;boot&#x2F;grub2&#x2F;grub.cfg，找到menuentray开头。找到条目后删除–unrestricted参数\<br>3.reboot重启验证，只有输入账号密码后，才能进入grub菜单修改管理密码<br>$$<br>3.BIOS加密，光盘修复<br>$$<br>\begin{cases}<br>#1、进入bios，从光盘启动\<br>#2、点击troubleshooting\<br>#3、进入界面\ 选择：rescue\ a\ centos\ Linux\ system\<br>#4、进入到rescue选项\ 按enter键\ 选1，其余选项为<br>\begin{cases}<br>1.continue：救援模式程序会自动查找系统中已有的文件系统，并可读写挂载到&#x2F;mnt&#x2F;sysimage目录\<br>2.read-only：会以只读的方式挂载已有的文件系统\<br>3.skip\ to\ sheell：手动挂载\<br>\end{cases}<br>\#5、sh切换bash模式\<br>chroot\ &#x2F;mnt&#x2F;sysimage\<br>#6、执行命令\<br>passwd\ root<br>\end{cases}<br>$$<br>4.扣主板bios电池，锁机柜</p>
+<h2 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h2><h5 id="1、什么是系统命令"><a href="#1、什么是系统命令" class="headerlink" title="1、什么是系统命令"></a>1、什么是系统命令</h5><p>shell解释器对系统接口的封装结果<br>系统命令&#x2F;shell命令-shell解释器-系统接口-内核-硬件</p>
+<h5 id="2、为何要用系统命令"><a href="#2、为何要用系统命令" class="headerlink" title="2、为何要用系统命令"></a>2、为何要用系统命令</h5><p>为了使用计算机</p>
+<h5 id="3、补充"><a href="#3、补充" class="headerlink" title="3、补充"></a>3、补充</h5><p>第一层意思：shell代表的是解释器，是对系统接口的封装，即在系统接口外又加了一层壳，shell只是一种称呼，而bash解释器才是具体的一种shell<br>第二层意思：shell这门编程预言（一堆命令及语法）</p>
+<h5 id="4、-posix（了解）"><a href="#4、-posix（了解）" class="headerlink" title="4、 posix（了解）"></a>4、 posix（了解）</h5><p>posix全称可移植的操作系统接口，posix是一种规范</p>
+<h5 id="5、shell交互式环境"><a href="#5、shell交互式环境" class="headerlink" title="5、shell交互式环境"></a>5、shell交互式环境</h5><p>&#x2F;#-超级管理员用户<br>￥-普通用户提示符<br>~-当前用户的个人文件夹-家目录<br>$$<br>useradd\ egon&#x2F;&#x2F;创建用户\<br>passwd\ egon&#x2F;&#x2F;交互式设置密码\<br>echo\ “123”\ |\ passwd\ –stdin\ egon&#x2F;&#x2F;非交互式\<br>$$</p>
+<h5 id="6、shell命令的语法格式"><a href="#6、shell命令的语法格式" class="headerlink" title="6、shell命令的语法格式"></a>6、shell命令的语法格式</h5><p>命令：就是一个单词，对应着一个功能&#x2F;程序，运行一条命令就启动一个进程<br>选项：对命令的描述，控制命令的具体运行<br>参数：命令的操作对象<br>ps：硬盘知识补充<br>        硬盘-》水桶<br>        分区-》水桶的隔断<br>        挂载点&#x2F;文件夹-》某一个具体的隔断</p>
+<h5 id="7、开始编写shell脚本程序"><a href="#7、开始编写shell脚本程序" class="headerlink" title="7、开始编写shell脚本程序"></a>7、开始编写shell脚本程序</h5><p>先切换到root用户，创建文件，后缀名没有硬性限制，通常以.sh结尾</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@egon ~~]# mkdir -p /a/b</span><br><span class="line">[root@egon ~~]# vim /a/b/hello.sh</span><br><span class="line">[root@egon ~~]# cat /a/b/hello.sh</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">第一个shell小程序</span></span><br><span class="line">echo &quot;hello world!&quot;</span><br></pre></td></tr></table></figure>
+
+<p>1.第一行表示我们选择使用的shell解释器是bash，也可以用：#!&#x2F;usr&#x2F;bin&#x2F;env bash  此外shell的第一行比较特殊，一般以#！开始来指定使用的shell解释的类型<br>2.第二行以#开始，表示本行是注释，注释是对代码的解释说明<br>3.第三行中的echo是Linux中的输出命令</p>
+<h5 id="8、运行shell脚本程序"><a href="#8、运行shell脚本程序" class="headerlink" title="8、运行shell脚本程序"></a>8、运行shell脚本程序</h5><p>运行方式也存在几种</p>
+<h6 id="1-绝对路径"><a href="#1-绝对路径" class="headerlink" title="1.绝对路径"></a>1.绝对路径</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">权限：</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">1，对沿途文件夹有x权限</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">2，对目标文件有r和x权限</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">例</span></span><br><span class="line">[root@egon ~~]# ll -d /a</span><br><span class="line">d--------x. 3 root root 15 11月 15 11:05 /a</span><br><span class="line">[root@egon ~~]# ll -d /a/b</span><br><span class="line">d--------x. 2 root root 18 11月 15 11:06 /a/b</span><br><span class="line">[root@egon ~~]# ll /a/b/hello.sh</span><br><span class="line">-rw-r--r-x. 1 root root 10 11月 15 11:06 /a/b/hello.sh</span><br><span class="line">[root@egon ~~]# su -egon</span><br><span class="line">[egon@egon ~~]$ /a/b/hello.sh</span><br><span class="line">hello world!</span><br><span class="line">[egon@egon ~~]$ </span><br></pre></td></tr></table></figure>
+
+<h6 id="2-相对路径"><a href="#2-相对路径" class="headerlink" title="2.相对路径"></a>2.相对路径</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">权限：</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">1，对沿途文件夹有x权限</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">2.对目标文件有r和x权限</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">例</span></span><br><span class="line">[root@egon ~~]# ll -d /a</span><br><span class="line">d--------x. 3 root root 15 11月 15 11:05 /a</span><br><span class="line">[root@egon ~~]# ll -d /a/b</span><br><span class="line">d--------x. 2 root root 18 11月 15 11:06 /a/b</span><br><span class="line">[root@egon ~~]# ll /a/b/hello.sh</span><br><span class="line">-rw-r--r-x. 1 root root 10 11月 15 11:06 /a/b/hello.sh</span><br><span class="line">[root@egon ~~]# su -egon</span><br><span class="line">[egon@egon ~~]$ /a/b/hello.sh #绝对路径的方式</span><br><span class="line">hello world!</span><br><span class="line">[egon@egon ~~]$ cd /a</span><br><span class="line">[egon@egon /a/a]$ ./b/hello.sh #相对路径的方式，加./作为前缀</span><br><span class="line">hello world!</span><br><span class="line">[egon@egon /a/a]$</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-解释器-文件路径（两种路径都可以）"><a href="#3-解释器-文件路径（两种路径都可以）" class="headerlink" title="3.解释器+文件路径（两种路径都可以）"></a>3.解释器+文件路径（两种路径都可以）</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">权限：</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">1，对沿途文件夹有x权限</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">2. 对目标文件有r权限就可以</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">因为我们执行的是解释器，当前用户对解释有执行权限就可以了，这个权限默认就有，而解释器需要读文件内容来执行，所以需要对目标文件有r权限</span></span><br><span class="line">[root@egon ~~]# chmod -R o=x /a</span><br><span class="line">[root@egon ~~]# chmod o=r /a/b/hello.sh</span><br><span class="line">[root@egon ~~]# su -egon</span><br><span class="line">[egon@egon ~~]$ cd /a</span><br><span class="line">[egon@egon /a/a]$ bash b/hello.sh</span><br><span class="line">hello world!</span><br><span class="line">[egon@egon /a/a]$</span><br></pre></td></tr></table></figure>
+
+<h6 id="4-上述三种方式都是在子shell进程中执行程序，而方式四则是在当前shell进程中执行"><a href="#4-上述三种方式都是在子shell进程中执行程序，而方式四则是在当前shell进程中执行" class="headerlink" title="4.上述三种方式都是在子shell进程中执行程序，而方式四则是在当前shell进程中执行"></a>4.上述三种方式都是在子shell进程中执行程序，而方式四则是在当前shell进程中执行</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">例如</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">上述三种方式都是在当前shell环境下开启了一个新的shell解释器环境/子shell来执行程序，脚本程序在子shell中运行完毕后，子shell环境随即关闭，然后返回到父级shell即当前shell环境中，如果就想在当前shell环境中执行,需要这么做</span></span><br><span class="line">[egon@localhost shell]$ cd /home/egon/shell/</span><br><span class="line">[egon@localhost shell]$ ll hello.sh # 当前用户egon对该文件没有执行权限</span><br><span class="line">-rw-r--r--. 1 root root 60 8月 14 18:33 hello.sh</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下面两种方式都一样</span></span><br><span class="line">[root@egon ~~]# chmod -R o=x /a</span><br><span class="line">[root@egon ~~]# chmod o=r /a/b/hello.sh</span><br><span class="line">[root@egon ~~]# su - egon</span><br><span class="line">[egon@egon ~~]$ . /a/b/hello.sh # . 后跟空格，然后再跟绝对路径</span><br><span class="line">hello world!</span><br><span class="line">[egon@egon ~~]$ cd /a/b/</span><br><span class="line">[egon@egon /a/b/a/b]$ . hello.sh # . 后跟空格，然后再跟相对路径</span><br><span class="line">hello world!</span><br><span class="line">[egon@egon /a/b/a/b]$ source hello.sh # 跟上述方式一样</span><br><span class="line">hello world!</span><br></pre></td></tr></table></figure>
+
+<p>在当前shell解释器进程中执行脚本与在子shell进程中执行脚本的区别在于作用域</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">一个shell环境就是一个单独的全局作用域，不同的shell环境，无法访问彼此shell环境中的变量</span></span><br><span class="line">[root@egon ~~]# su - egon</span><br><span class="line">[egon@localhost ~]$ x=111</span><br><span class="line">[egon@localhost ~]$ cat /a/b/hello.sh</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">echo &quot;hello world!&quot;</span><br><span class="line">echo $x # 我们在这里访问一下全局变量x</span><br><span class="line">[egon@localhost ~]$ source /a/b/hello.sh # 在当前shell环境执行，可以访问到x</span><br><span class="line">hello world!</span><br><span class="line">111 # 取到了x的值</span><br><span class="line">[egon@localhost ~]$ bash /a/b/hello.sh # 在子shell环境执行，不能访问到x</span><br><span class="line">hello world!</span><br><span class="line">    # 此处打印空</span><br></pre></td></tr></table></figure>
+
+<h5 id="9、调试shell程序"><a href="#9、调试shell程序" class="headerlink" title="9、调试shell程序"></a>9、调试shell程序</h5><h6 id="方法一、以调试的方式运行"><a href="#方法一、以调试的方式运行" class="headerlink" title="方法一、以调试的方式运行"></a>方法一、以调试的方式运行</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@egon test]# sh -vx login.sh #不加-v选项，只会显示程序中运行的代码，不会显示注释信息</span><br></pre></td></tr></table></figure>
+
+<h6 id="方法二、只调试语法是否有问题，比如if判断少了结尾"><a href="#方法二、只调试语法是否有问题，比如if判断少了结尾" class="headerlink" title="方法二、只调试语法是否有问题，比如if判断少了结尾"></a>方法二、只调试语法是否有问题，比如if判断少了结尾</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@egon test]# sh -n login.sh </span><br></pre></td></tr></table></figure>
+
+<h6 id="方法三、仅调试脚本的一部分，用set-x-与set-x包含，运行过程中会只打印它们包含的代码段的运行情况"><a href="#方法三、仅调试脚本的一部分，用set-x-与set-x包含，运行过程中会只打印它们包含的代码段的运行情况" class="headerlink" title="方法三、仅调试脚本的一部分，用set -x 与set +x包含，运行过程中会只打印它们包含的代码段的运行情况"></a>方法三、仅调试脚本的一部分，用set -x 与set +x包含，运行过程中会只打印它们包含的代码段的运行情况</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@egon test]# cat login.sh</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/usr/bin/env bash</span></span><br><span class="line">set -x</span><br><span class="line">read -p &quot;请输入您的名字: &quot; name</span><br><span class="line">read -p &quot;请输入您的密码: &quot; pwd</span><br><span class="line">set +x</span><br><span class="line">if [[ &quot;$name&quot; == &quot;egon&quot; &amp;&amp; &quot;$pwd&quot; == &quot;123&quot; ]];then #中括号两端需要留有空格</span><br><span class="line">echo &quot;登录成功&quot;</span><br><span class="line">else</span><br><span class="line">echo &quot;账号或密码错误&quot;</span><br><span class="line">fi</span><br><span class="line">[root@egon test]# . login.s</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -310,7 +373,9 @@
   <entry>
     <title>后台管理框架</title>
     <url>/2024/09/05/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E6%A1%86%E6%9E%B6/</url>
-    <content><![CDATA[<h4 id="1安装环境"><a href="#1安装环境" class="headerlink" title="1安装环境"></a>1安装环境</h4><p>docker 用于启动服务<br>安装jdk 用来构建后端项目<br>安装node.js用来构建前端项目</p>
+    <content><![CDATA[<span id="more"></span>
+
+<h4 id="1安装环境"><a href="#1安装环境" class="headerlink" title="1安装环境"></a>1安装环境</h4><p>docker 用于启动服务<br>安装jdk 用来构建后端项目<br>安装node.js用来构建前端项目</p>
 <p>使用的Ubuntu为22.04版本</p>
 <p><img src="/2024/09/05/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E6%A1%86%E6%9E%B6/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-16%20153555.png"></p>
 <p>2克隆项目</p>
@@ -328,49 +393,6 @@
 <h4 id="11在k8s环境中启动服务"><a href="#11在k8s环境中启动服务" class="headerlink" title="11在k8s环境中启动服务"></a>11在k8s环境中启动服务</h4><p>制作yaml将各个服务启动到k8s中</p>
 <p>并配置metallb让k8s能够使局域网ip作为loadbalancer地址</p>
 <p>配置ingress和域名让服务能够通过域名正常访问</p>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell基础</title>
-    <url>/2024/06/21/shell%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h2 id="操作系统的启动流程"><a href="#操作系统的启动流程" class="headerlink" title="操作系统的启动流程"></a>操作系统的启动流程</h2><h3 id="安全优化"><a href="#安全优化" class="headerlink" title="安全优化"></a>安全优化</h3><p>$$<br>\begin{cases}<br>单用户模式 破解密码\<br>grub加密\<br>光盘修复模式&#x2F;救援模式 修复操作系统的问题\<br>BIOS加密\<br>\end{cases}<br>$$</p>
-<span id="more"></span>
-
-<h3 id="shell基础"><a href="#shell基础" class="headerlink" title="shell基础"></a>shell基础</h3><p>$$<br>\begin{cases}<br>介绍\<br>交互式环境\<br>命令语法\<br>bash解释器特性\<br>命令查找优先级\<br>查看帮助信息\<br>常用命令\<br>\end{cases}<br>$$</p>
-<p>$$<br>文件处理相关命令<br>\begin{cases}<br>目录结构 单根结构\<br>系统目录注解（***）\<br>文件操作基础（增、删、改、查）\<br>查看文件内容、修改文件内容vim、查找文件find\<br>打包压缩、软硬连接<br>\字符处理命令<br>\begin{cases}<br>sort\<br>uniq\<br>cut\<br>tr\<br>wc\<br>\end{cases}<br>\路径<br>\begin{cases}<br>相对路径\<br>绝对路径\<br>\end{cases}<br>\end{cases}<br>$$</p>
-<h2 id="二、操作系统启动流程"><a href="#二、操作系统启动流程" class="headerlink" title="二、操作系统启动流程"></a>二、操作系统启动流程</h2><p>加电<br>启动BIOS，检测启动项目<br>读取启动盘第一个扇区512bytes，包含是mbr主引导记录（446引导程序bootloader-grub）<br>grub启动<br>加载内核<br>$$<br>读取运行级别<br>\begin{cases}<br>0-关机\<br>1-单用户工作，不需要账号密码进入后就是管理员账号，用于系统维护，禁止远程登录\<br>2-多用户状态（没有NFS），没有网络\<br>3-完全多用户（有NFS）登录后进入控制台\<br>4-系统未使用，保留\<br>5-图形GUI模式\<br>6-重启\<br>\end{cases}<br>$$<br>centos7启动的第一个程序systemd，pid-0，启动其他服务</p>
-<h3 id="三、系统密码破解"><a href="#三、系统密码破解" class="headerlink" title="三、系统密码破解"></a>三、系统密码破解</h3><p>1.重启<br>切换第一个模式，并按E（dit）,编辑<br>进入最底层，找到ro rhgb……修改为：\ rw\ init&#x3D;&#x2F;sysroot&#x2F;bin&#x2F;sh<br>按CTRL-X进入单用户模式<br>执行chroot\ &#x2F;sysroot&#x2F;<br>passwd\ root回车输入密码<br>一定要再输入：<br>$$<br>vim\ &#x2F;etc&#x2F;sysconfig&#x2F;selinux<br>$$<br>把selinux修改为disabled#关闭模式<br>2.为了防止其他人进行修改，可以在对grub进行一次加密<br>$$<br>1.执行grub2-setpassword\ 命令\<br>#\ grub2-setpassword\<br>enter\ password<em><strong>\<br>confirm\ password</strong></em>\<br>2.在打开文件&#x2F;boot&#x2F;grub2&#x2F;grub.cfg，找到menuentray开头。找到条目后删除–unrestricted参数\<br>3.reboot重启验证，只有输入账号密码后，才能进入grub菜单修改管理密码<br>$$<br>3.BIOS加密，光盘修复<br>$$<br>\begin{cases}<br>#1、进入bios，从光盘启动\<br>#2、点击troubleshooting\<br>#3、进入界面\ 选择：rescue\ a\ centos\ Linux\ system\<br>#4、进入到rescue选项\ 按enter键\ 选1，其余选项为<br>\begin{cases}<br>1.continue：救援模式程序会自动查找系统中已有的文件系统，并可读写挂载到&#x2F;mnt&#x2F;sysimage目录\<br>2.read-only：会以只读的方式挂载已有的文件系统\<br>3.skip\ to\ sheell：手动挂载\<br>\end{cases}<br>\#5、sh切换bash模式\<br>chroot\ &#x2F;mnt&#x2F;sysimage\<br>#6、执行命令\<br>passwd\ root<br>\end{cases}<br>$$<br>4.扣主板bios电池，锁机柜</p>
-<h2 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h2><h5 id="1、什么是系统命令"><a href="#1、什么是系统命令" class="headerlink" title="1、什么是系统命令"></a>1、什么是系统命令</h5><p>shell解释器对系统接口的封装结果<br>系统命令&#x2F;shell命令-shell解释器-系统接口-内核-硬件</p>
-<h5 id="2、为何要用系统命令"><a href="#2、为何要用系统命令" class="headerlink" title="2、为何要用系统命令"></a>2、为何要用系统命令</h5><p>为了使用计算机</p>
-<h5 id="3、补充"><a href="#3、补充" class="headerlink" title="3、补充"></a>3、补充</h5><p>第一层意思：shell代表的是解释器，是对系统接口的封装，即在系统接口外又加了一层壳，shell只是一种称呼，而bash解释器才是具体的一种shell<br>第二层意思：shell这门编程预言（一堆命令及语法）</p>
-<h5 id="4、-posix（了解）"><a href="#4、-posix（了解）" class="headerlink" title="4、 posix（了解）"></a>4、 posix（了解）</h5><p>posix全称可移植的操作系统接口，posix是一种规范</p>
-<h5 id="5、shell交互式环境"><a href="#5、shell交互式环境" class="headerlink" title="5、shell交互式环境"></a>5、shell交互式环境</h5><p>&#x2F;#-超级管理员用户<br>￥-普通用户提示符<br>~-当前用户的个人文件夹-家目录<br>$$<br>useradd\ egon&#x2F;&#x2F;创建用户\<br>passwd\ egon&#x2F;&#x2F;交互式设置密码\<br>echo\ “123”\ |\ passwd\ –stdin\ egon&#x2F;&#x2F;非交互式\<br>$$</p>
-<h5 id="6、shell命令的语法格式"><a href="#6、shell命令的语法格式" class="headerlink" title="6、shell命令的语法格式"></a>6、shell命令的语法格式</h5><p>命令：就是一个单词，对应着一个功能&#x2F;程序，运行一条命令就启动一个进程<br>选项：对命令的描述，控制命令的具体运行<br>参数：命令的操作对象<br>ps：硬盘知识补充<br>        硬盘-》水桶<br>        分区-》水桶的隔断<br>        挂载点&#x2F;文件夹-》某一个具体的隔断</p>
-<h5 id="7、开始编写shell脚本程序"><a href="#7、开始编写shell脚本程序" class="headerlink" title="7、开始编写shell脚本程序"></a>7、开始编写shell脚本程序</h5><p>先切换到root用户，创建文件，后缀名没有硬性限制，通常以.sh结尾</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@egon ~~]# mkdir -p /a/b</span><br><span class="line">[root@egon ~~]# vim /a/b/hello.sh</span><br><span class="line">[root@egon ~~]# cat /a/b/hello.sh</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">第一个shell小程序</span></span><br><span class="line">echo &quot;hello world!&quot;</span><br></pre></td></tr></table></figure>
-
-<p>1.第一行表示我们选择使用的shell解释器是bash，也可以用：#!&#x2F;usr&#x2F;bin&#x2F;env bash  此外shell的第一行比较特殊，一般以#！开始来指定使用的shell解释的类型<br>2.第二行以#开始，表示本行是注释，注释是对代码的解释说明<br>3.第三行中的echo是Linux中的输出命令</p>
-<h5 id="8、运行shell脚本程序"><a href="#8、运行shell脚本程序" class="headerlink" title="8、运行shell脚本程序"></a>8、运行shell脚本程序</h5><p>运行方式也存在几种</p>
-<h6 id="1-绝对路径"><a href="#1-绝对路径" class="headerlink" title="1.绝对路径"></a>1.绝对路径</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">权限：</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">1，对沿途文件夹有x权限</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">2，对目标文件有r和x权限</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">例</span></span><br><span class="line">[root@egon ~~]# ll -d /a</span><br><span class="line">d--------x. 3 root root 15 11月 15 11:05 /a</span><br><span class="line">[root@egon ~~]# ll -d /a/b</span><br><span class="line">d--------x. 2 root root 18 11月 15 11:06 /a/b</span><br><span class="line">[root@egon ~~]# ll /a/b/hello.sh</span><br><span class="line">-rw-r--r-x. 1 root root 10 11月 15 11:06 /a/b/hello.sh</span><br><span class="line">[root@egon ~~]# su -egon</span><br><span class="line">[egon@egon ~~]$ /a/b/hello.sh</span><br><span class="line">hello world!</span><br><span class="line">[egon@egon ~~]$ </span><br></pre></td></tr></table></figure>
-
-<h6 id="2-相对路径"><a href="#2-相对路径" class="headerlink" title="2.相对路径"></a>2.相对路径</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">权限：</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">1，对沿途文件夹有x权限</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">2.对目标文件有r和x权限</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">例</span></span><br><span class="line">[root@egon ~~]# ll -d /a</span><br><span class="line">d--------x. 3 root root 15 11月 15 11:05 /a</span><br><span class="line">[root@egon ~~]# ll -d /a/b</span><br><span class="line">d--------x. 2 root root 18 11月 15 11:06 /a/b</span><br><span class="line">[root@egon ~~]# ll /a/b/hello.sh</span><br><span class="line">-rw-r--r-x. 1 root root 10 11月 15 11:06 /a/b/hello.sh</span><br><span class="line">[root@egon ~~]# su -egon</span><br><span class="line">[egon@egon ~~]$ /a/b/hello.sh #绝对路径的方式</span><br><span class="line">hello world!</span><br><span class="line">[egon@egon ~~]$ cd /a</span><br><span class="line">[egon@egon /a/a]$ ./b/hello.sh #相对路径的方式，加./作为前缀</span><br><span class="line">hello world!</span><br><span class="line">[egon@egon /a/a]$</span><br></pre></td></tr></table></figure>
-
-<h6 id="3-解释器-文件路径（两种路径都可以）"><a href="#3-解释器-文件路径（两种路径都可以）" class="headerlink" title="3.解释器+文件路径（两种路径都可以）"></a>3.解释器+文件路径（两种路径都可以）</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">权限：</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">1，对沿途文件夹有x权限</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">2. 对目标文件有r权限就可以</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">因为我们执行的是解释器，当前用户对解释有执行权限就可以了，这个权限默认就有，而解释器需要读文件内容来执行，所以需要对目标文件有r权限</span></span><br><span class="line">[root@egon ~~]# chmod -R o=x /a</span><br><span class="line">[root@egon ~~]# chmod o=r /a/b/hello.sh</span><br><span class="line">[root@egon ~~]# su -egon</span><br><span class="line">[egon@egon ~~]$ cd /a</span><br><span class="line">[egon@egon /a/a]$ bash b/hello.sh</span><br><span class="line">hello world!</span><br><span class="line">[egon@egon /a/a]$</span><br></pre></td></tr></table></figure>
-
-<h6 id="4-上述三种方式都是在子shell进程中执行程序，而方式四则是在当前shell进程中执行"><a href="#4-上述三种方式都是在子shell进程中执行程序，而方式四则是在当前shell进程中执行" class="headerlink" title="4.上述三种方式都是在子shell进程中执行程序，而方式四则是在当前shell进程中执行"></a>4.上述三种方式都是在子shell进程中执行程序，而方式四则是在当前shell进程中执行</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">例如</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">上述三种方式都是在当前shell环境下开启了一个新的shell解释器环境/子shell来执行程序，脚本程序在子shell中运行完毕后，子shell环境随即关闭，然后返回到父级shell即当前shell环境中，如果就想在当前shell环境中执行,需要这么做</span></span><br><span class="line">[egon@localhost shell]$ cd /home/egon/shell/</span><br><span class="line">[egon@localhost shell]$ ll hello.sh # 当前用户egon对该文件没有执行权限</span><br><span class="line">-rw-r--r--. 1 root root 60 8月 14 18:33 hello.sh</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下面两种方式都一样</span></span><br><span class="line">[root@egon ~~]# chmod -R o=x /a</span><br><span class="line">[root@egon ~~]# chmod o=r /a/b/hello.sh</span><br><span class="line">[root@egon ~~]# su - egon</span><br><span class="line">[egon@egon ~~]$ . /a/b/hello.sh # . 后跟空格，然后再跟绝对路径</span><br><span class="line">hello world!</span><br><span class="line">[egon@egon ~~]$ cd /a/b/</span><br><span class="line">[egon@egon /a/b/a/b]$ . hello.sh # . 后跟空格，然后再跟相对路径</span><br><span class="line">hello world!</span><br><span class="line">[egon@egon /a/b/a/b]$ source hello.sh # 跟上述方式一样</span><br><span class="line">hello world!</span><br></pre></td></tr></table></figure>
-
-<p>在当前shell解释器进程中执行脚本与在子shell进程中执行脚本的区别在于作用域</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">一个shell环境就是一个单独的全局作用域，不同的shell环境，无法访问彼此shell环境中的变量</span></span><br><span class="line">[root@egon ~~]# su - egon</span><br><span class="line">[egon@localhost ~]$ x=111</span><br><span class="line">[egon@localhost ~]$ cat /a/b/hello.sh</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">echo &quot;hello world!&quot;</span><br><span class="line">echo $x # 我们在这里访问一下全局变量x</span><br><span class="line">[egon@localhost ~]$ source /a/b/hello.sh # 在当前shell环境执行，可以访问到x</span><br><span class="line">hello world!</span><br><span class="line">111 # 取到了x的值</span><br><span class="line">[egon@localhost ~]$ bash /a/b/hello.sh # 在子shell环境执行，不能访问到x</span><br><span class="line">hello world!</span><br><span class="line">    # 此处打印空</span><br></pre></td></tr></table></figure>
-
-<h5 id="9、调试shell程序"><a href="#9、调试shell程序" class="headerlink" title="9、调试shell程序"></a>9、调试shell程序</h5><h6 id="方法一、以调试的方式运行"><a href="#方法一、以调试的方式运行" class="headerlink" title="方法一、以调试的方式运行"></a>方法一、以调试的方式运行</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@egon test]# sh -vx login.sh #不加-v选项，只会显示程序中运行的代码，不会显示注释信息</span><br></pre></td></tr></table></figure>
-
-<h6 id="方法二、只调试语法是否有问题，比如if判断少了结尾"><a href="#方法二、只调试语法是否有问题，比如if判断少了结尾" class="headerlink" title="方法二、只调试语法是否有问题，比如if判断少了结尾"></a>方法二、只调试语法是否有问题，比如if判断少了结尾</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@egon test]# sh -n login.sh </span><br></pre></td></tr></table></figure>
-
-<h6 id="方法三、仅调试脚本的一部分，用set-x-与set-x包含，运行过程中会只打印它们包含的代码段的运行情况"><a href="#方法三、仅调试脚本的一部分，用set-x-与set-x包含，运行过程中会只打印它们包含的代码段的运行情况" class="headerlink" title="方法三、仅调试脚本的一部分，用set -x 与set +x包含，运行过程中会只打印它们包含的代码段的运行情况"></a>方法三、仅调试脚本的一部分，用set -x 与set +x包含，运行过程中会只打印它们包含的代码段的运行情况</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@egon test]# cat login.sh</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/usr/bin/env bash</span></span><br><span class="line">set -x</span><br><span class="line">read -p &quot;请输入您的名字: &quot; name</span><br><span class="line">read -p &quot;请输入您的密码: &quot; pwd</span><br><span class="line">set +x</span><br><span class="line">if [[ &quot;$name&quot; == &quot;egon&quot; &amp;&amp; &quot;$pwd&quot; == &quot;123&quot; ]];then #中括号两端需要留有空格</span><br><span class="line">echo &quot;登录成功&quot;</span><br><span class="line">else</span><br><span class="line">echo &quot;账号或密码错误&quot;</span><br><span class="line">fi</span><br><span class="line">[root@egon test]# . login.s</span><br></pre></td></tr></table></figure>
-
 ]]></content>
       <tags>
         <tag>Linux</tag>

@@ -150,12 +150,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -177,6 +177,83 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/07/Nginx/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/T.png">
+      <meta itemprop="name" content="枝江最強聖女と超高校级の可愛!嘉然Dianaです!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="年年岁岁花相似，岁岁年年人不同">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/07/Nginx/" class="post-title-link" itemprop="url">Nginx</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-10-07 14:14:58 / Modified: 14:28:48" itemprop="dateCreated datePublished" datetime="2024-10-07T14:14:58+08:00">2024-10-07</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <span id="more"></span>
+
+<h1 id="在nginx上配置ssl证书验证"><a href="#在nginx上配置ssl证书验证" class="headerlink" title="在nginx上配置ssl证书验证"></a>在nginx上配置ssl证书验证</h1><p>在Nginx上配置SSL以启用HTTPS连接</p>
+<h2 id="1获取SSL证书"><a href="#1获取SSL证书" class="headerlink" title="1获取SSL证书"></a>1获取SSL证书</h2><p>从项目相关的域名管理找到nginx证书下载</p>
+<h2 id="2备份原有配置"><a href="#2备份原有配置" class="headerlink" title="2备份原有配置"></a>2备份原有配置</h2><p>在修改配置文件之前，备份原有的Nginx配置文件</p>
+<h2 id="3编辑Nginx配置文件并重启服务"><a href="#3编辑Nginx配置文件并重启服务" class="headerlink" title="3编辑Nginx配置文件并重启服务"></a>3编辑Nginx配置文件并重启服务</h2><p>打开配置文件并进行一下修改：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/nginx/conf/nginx.conf</span><br><span class="line">server&#123;</span><br><span class="line">listen 80;</span><br><span class="line">server_name wanda.com;#将wanda.com替代为自己域名</span><br><span class="line">return 301 https://$host$request_uri;# 重定向HTTP到HTTPS</span><br><span class="line">&#125;</span><br><span class="line">server&#123;</span><br><span class="line">listen 443 ssl;#监听443端口，并启用SSL </span><br><span class="line">server_name wanda.com;#同样替换域名</span><br><span class="line">ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;#指定证书文件路径</span><br><span class="line">ssl-certificate_key /etc/letsencrypt/live/example.com/prikey.pem;#指定私钥文件</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SSL相关设置，可根据需要调整</span></span><br><span class="line">ssl_protocols TLSv1.2 TLSv1.3;</span><br><span class="line">ssl_prefer_server_ciphers on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -214,9 +291,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2024-09-21 12:54:37 / Modified: 13:23:00" itemprop="dateCreated datePublished" datetime="2024-09-21T12:54:37+08:00">2024-09-21</time>
+      <time title="Created: 2024-09-21 12:54:37" itemprop="dateCreated datePublished" datetime="2024-09-21T12:54:37+08:00">2024-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-09-23 10:16:48" itemprop="dateModified" datetime="2024-09-23T10:16:48+08:00">2024-09-23</time>
     </span>
 
   
@@ -229,7 +312,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="1-docker组成"><a href="#1-docker组成" class="headerlink" title="1.docker组成"></a>1.docker组成</h2><h3 id="1-1镜像-Image"><a href="#1-1镜像-Image" class="headerlink" title="1.1镜像(Image)"></a>1.1镜像(Image)</h3><p>docker镜像就好比一个模板，我们可以通过这个模板来创建容器服务，tomcat镜像&#x3D;&gt;run&#x3D;&#x3D;&gt;tomcat01容器（提供服务器），通过这个镜像可以创建多个容器（最终服务运行或者项目运行就是在容器中的）</p>
+          <span id="more"></span>
+
+<h2 id="1-docker组成"><a href="#1-docker组成" class="headerlink" title="1.docker组成"></a>1.docker组成</h2><h3 id="1-1镜像-Image"><a href="#1-1镜像-Image" class="headerlink" title="1.1镜像(Image)"></a>1.1镜像(Image)</h3><p>docker镜像就好比一个模板，我们可以通过这个模板来创建容器服务，tomcat镜像&#x3D;&gt;run&#x3D;&#x3D;&gt;tomcat01容器（提供服务器），通过这个镜像可以创建多个容器（最终服务运行或者项目运行就是在容器中的）</p>
 <h3 id="1-2容器-container"><a href="#1-2容器-container" class="headerlink" title="1.2容器(container)"></a>1.2容器(container)</h3><p>docker利用容器技术，独立运行一个或者一组应用 通过镜像来创建启动，停止，删除，基本命令！<br>目前就可以把这个容器理解为就是一个简易的linux系统</p>
 <h3 id="1-3仓库-repository"><a href="#1-3仓库-repository" class="headerlink" title="1.3仓库(repository)"></a>1.3仓库(repository)</h3><p>存放镜像的地方，也分为公有仓库和私有仓库</p>
 <h2 id="2-docker安装"><a href="#2-docker安装" class="headerlink" title="2.docker安装"></a>2.docker安装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># 1.卸载旧的版本</span><br><span class="line">yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-engine</span><br><span class="line"># 2.需要的安装包</span><br><span class="line">yum install -y yum-utils</span><br><span class="line"># 3.设置镜像的仓库</span><br><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://download.docker.com/linux/centos/docker-ce.repo # 默认是从国外的。</span><br><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo # 推荐使用阿里云的。</span><br><span class="line"># 安装容器之前，更新yum软件包索引。</span><br><span class="line">yum makecache fast</span><br><span class="line"># 4.安装容器相关的。docker-ce（社区版）docker-ee（企业版）</span><br><span class="line">yum install docker-ce docker-ce-cli containerd.io</span><br><span class="line"># 5.启动docker</span><br><span class="line">systemctl start docker</span><br><span class="line"># 6.使用docker version查看是否安装成功</span><br></pre></td></tr></table></figure>
@@ -259,7 +344,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">exit        # 容器直接停止，并退出</span><br><span class="line">ctrl+P+Q    # 容器不停止，退出</span><br><span class="line">[root@JWei_0124 //]# docker run -it centos /bin/bash  //交互式进入</span><br><span class="line">[root@68b68a9576e0 /]# [root@JWei_0124 //]#  //按快捷键 自动输入</span><br><span class="line">[root@JWei_0124 //]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS         PORTS     NAMES</span><br><span class="line">68b68a9576e0   centos    &quot;/bin/bash&quot;   2 minutes ago   Up 2 minutes             peaceful_jemison</span><br><span class="line">[root@JWei_0124 //]# </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>删除容器</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker rm 容器id                    # 删除容器（不能删除正在运行的容器）如果要强制删除：docker rm -f 容器id</span><br><span class="line">docker rm -f $(docker ps -aq)        # 删除全部容器</span><br><span class="line">docker ps -a -q|xargs docker rm        # 删除所有容器</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker stop []#停止容器</span><br><span class="line">docker rm [容器id]                  # 删除容器（不能删除正在运行的容器）如果要强制删除：docker rm -f 容器id</span><br><span class="line">docker rmi []#删除镜像</span><br><span class="line">docker rm -f $(docker ps -aq)        # 删除全部容器</span><br><span class="line">docker ps -a -q|xargs docker rm        # 删除所有容器</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>登录和启动容器</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker start 容器id        # 启动容器</span><br><span class="line">docker restart 容器id    # 重启容器</span><br><span class="line">docker stop 容器id        # 停止当前正在运行的容器</span><br><span class="line">docker kill 容器id        # 强制停止当前容器</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -326,7 +411,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-09-16 23:35:47" itemprop="dateModified" datetime="2024-09-16T23:35:47+08:00">2024-09-16</time>
+      <time title="Modified: 2024-09-23 10:21:17" itemprop="dateModified" datetime="2024-09-23T10:21:17+08:00">2024-09-23</time>
     </span>
 
   
@@ -339,7 +424,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="1安装环境"><a href="#1安装环境" class="headerlink" title="1安装环境"></a>1安装环境</h4><p>docker 用于启动服务<br>安装jdk 用来构建后端项目<br>安装node.js用来构建前端项目</p>
+          <span id="more"></span>
+
+<h4 id="1安装环境"><a href="#1安装环境" class="headerlink" title="1安装环境"></a>1安装环境</h4><p>docker 用于启动服务<br>安装jdk 用来构建后端项目<br>安装node.js用来构建前端项目</p>
 <p>使用的Ubuntu为22.04版本</p>
 <p><img src="/2024/09/05/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E6%A1%86%E6%9E%B6/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-16%20153555.png"></p>
 <p>2克隆项目</p>
@@ -411,9 +498,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2024-06-23 20:21:48 / Modified: 23:25:42" itemprop="dateCreated datePublished" datetime="2024-06-23T20:21:48+08:00">2024-06-23</time>
+      <time title="Created: 2024-06-23 20:21:48" itemprop="dateCreated datePublished" datetime="2024-06-23T20:21:48+08:00">2024-06-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-09-23 10:21:05" itemprop="dateModified" datetime="2024-09-23T10:21:05+08:00">2024-09-23</time>
     </span>
 
   
@@ -426,7 +519,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="nginx安装使用"><a href="#nginx安装使用" class="headerlink" title="nginx安装使用"></a>nginx安装使用</h1><p>&#x2F;etc&#x2F;nginx<br>&#x2F;usr&#x2F;share&#x2F;nginx<br>&#x2F;usr&#x2F;lib64&#x2F;nginx<br>&#x2F;var&#x2F;lib&#x2F;nginx</p>
+          <span id="more"></span>
+
+<h1 id="nginx安装使用"><a href="#nginx安装使用" class="headerlink" title="nginx安装使用"></a>nginx安装使用</h1><p>&#x2F;etc&#x2F;nginx<br>&#x2F;usr&#x2F;share&#x2F;nginx<br>&#x2F;usr&#x2F;lib64&#x2F;nginx<br>&#x2F;var&#x2F;lib&#x2F;nginx</p>
 
       
     </div>
@@ -970,87 +1065,9 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/16/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/T.png">
-      <meta itemprop="name" content="枝江最強聖女と超高校级の可愛!嘉然Dianaです!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="年年岁岁花相似，岁岁年年人不同">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/16/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2024-06-16 08:50:44" itemprop="dateCreated datePublished" datetime="2024-06-16T08:50:44+08:00">2024-06-16</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
 
 </div>
   </main>
