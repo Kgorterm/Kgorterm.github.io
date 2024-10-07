@@ -185,7 +185,9 @@
   <entry>
     <title>bash</title>
     <url>/2024/06/16/bash/</url>
-    <content><![CDATA[<h1 id="bash解释器特性"><a href="#bash解释器特性" class="headerlink" title="bash解释器特性"></a>bash解释器特性</h1><h4 id="1-命令和文件自动补全-注意：Tab只能补全命令和文件"><a href="#1-命令和文件自动补全-注意：Tab只能补全命令和文件" class="headerlink" title="1 命令和文件自动补全 注意：Tab只能补全命令和文件"></a>1 命令和文件自动补全 注意：Tab只能补全命令和文件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost aaa]<span class="comment"># ls /etc/sysconfig/network-scripts/ifcfg-ens33</span></span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<span id="more"></span>
+
+<h1 id="bash解释器特性"><a href="#bash解释器特性" class="headerlink" title="bash解释器特性"></a>bash解释器特性</h1><h4 id="1-命令和文件自动补全-注意：Tab只能补全命令和文件"><a href="#1-命令和文件自动补全-注意：Tab只能补全命令和文件" class="headerlink" title="1 命令和文件自动补全 注意：Tab只能补全命令和文件"></a>1 命令和文件自动补全 注意：Tab只能补全命令和文件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost aaa]<span class="comment"># ls /etc/sysconfig/network-scripts/ifcfg-ens33</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="2快捷键"><a href="#2快捷键" class="headerlink" title="2快捷键"></a>2快捷键</h4><p>^c 终止前台运行的程序<br>^d 退出 等价exit<br>^l 清屏 等价clear<br>^a 光标移至最前<br>^e 光标移至最后<br>Alt+. 取前一条命令的最后一个参数 等价!$</p>
 <h4 id="3历史命令"><a href="#3历史命令" class="headerlink" title="3历史命令"></a>3历史命令</h4><p>查看</p>
