@@ -139,6 +139,20 @@
       </tags>
   </entry>
   <entry>
+    <title>K8S搭建以及常见问题</title>
+    <url>/2024/10/12/K8S%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>K8S搭建以及所遇到的问题</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# kubectl get nodes</span><br><span class="line">The connection to the server localhost:8080 was refused - did you specify the right host or port?</span><br></pre></td></tr></table></figure>
+
+<p>复制config文件到指定目录，重启</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p $HOME/.kube</span><br><span class="line">cp -i /etc/kubernetes/admin.conf $HOME/.kube/config</span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>K8S</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux 基础</title>
     <url>/2024/06/21/Linux-%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<p>day01 </p>
@@ -177,7 +191,14 @@
     <content><![CDATA[<p>day02</p>
 <span id="more"></span>
 
-<p>一、什么是xshell？<br>xshell是一个远程登录客户端程序，对应的服务端程序openssh-server（默认22）<br>二、为何要用xshell<br>远程管理<br>三、如何使用<br><a href="http://pan.baodi.com/s1NXnnQ1RsQ9RMcRMcWUb">http://pan.baodi.com/s1NXnnQ1RsQ9RMcRMcWUb</a><br>提取码 v3h5<br>下载安装后整体优化如下<br>$$<br>\begin{cases}<br>工具-选项-会话文件夹（指定一个文件夹）,便于管理\<br>工具-选项-更新-取消自动\<br>工具-选项-高级-终端-禁用铃声\<br>右键任务栏\<br>文件-属性-终端-缓冲区大小显示行数（shift+pgup&#x2F;pgdn翻页）\<br>终端-VT模式-普通\<br>高级-禁用更改终端标题\<br>\end{cases}<br>$$<br>四、远程连接排错<br>$$<br>\begin{cases}<br>1.测试网络是否畅通：ping 服务端ip\<br>2.是否被拦截：selinux，firewall防火墙<br>\begin{cases}<br>1.关闭防火墙\<br>systemctl stop firewalld\<br>systemctl disabled firewalld禁止开机自启动\<br>2.关闭selinux\<br>setenforce 1 # enforcing-加载并生效\<br>setenforce 0 # permissive-加载但不生效\<br>             # disabled-不加载\<br>vim &#x2F;etc&#x2F;sysconfig&#x2F;selinux #修改selinux&#x3D;disabeld\<br>查看selinux状态-getenforce\<br>systemctl restart sshd # 开启服务端程序<br>systemctl restart network # 重启服务<br>\end{cases}<br>\end{cases}<br>$$</p>
+<p>一、什么是xshell？<br>xshell是一个远程登录客户端程序，对应的服务端程序openssh-server（默认22）<br>二、为何要用xshell<br>远程管理<br>三、如何使用<br><a href="http://pan.baodi.com/s1NXnnQ1RsQ9RMcRMcWUb">http://pan.baodi.com/s1NXnnQ1RsQ9RMcRMcWUb</a><br>提取码 v3h5<br>下载安装后整体优化如下<br>$$<br>\begin{cases}<br>工具-选项-会话文件夹（指定一个文件夹）,便于管理\<br>工具-选项-更新-取消自动\<br>工具-选项-高级-终端-禁用铃声\<br>右键任务栏\<br>文件-属性-终端-缓冲区大小显示行数（shift+pgup&#x2F;pgdn翻页）\<br>终端-VT模式-普通\<br>高级-禁用更改终端标题\<br>\end{cases}<br>$$<br>四、远程连接排错<br>$$<br>\begin{cases}<br>1.测试网络是否畅通：ping 服务端ip\<br>2.是否被拦截：selinux，firewall防火墙<br>\begin{cases}<br>1.关闭防火墙\<br>systemctl stop firewalld\<br>systemctl disabled firewalld禁止开机自启动\<br>2.关闭selinux\<br>setenforce 1 # enforcing-加载并生效\<br>setenforce 0 # permissive-加载但不生效\<br>             # disabled-不加载\<br>vim &#x2F;etc&#x2F;sysconfig&#x2F;selinux #修改selinux&#x3D;disabeld\<br>查看selinux状态-getenforce\<br>systemctl restart sshd # 开启服务端程序<br>systemctl restart network # 重启服务<br>\end{cases}<br>\end{cases}<br>$$<br>五、关于xshell连接任一虚拟机时“密码出现错误……”（但密码正确时）</p>
+<p>前往虚拟机打开终端并切换root权限</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
+<p>找到Authentication，并去掉部分注释</p>
+<p><img src="/2024/06/21/Xshell%E5%B7%A5%E5%85%B7/ubuntu-ssh.png"></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Authentication:                  <span class="comment">#限制用户必须在指定时间内认证成功，0为无限制，默认120s</span></span></span><br><span class="line">LoginGraceTime 2m                  #用来设定如果用户登录失败，在切断连接前服务器所等待时间</span><br><span class="line">PermitRootLogin prohibit-password  #是否能直接使用root登录ssh远程连接，不建议改为yes</span><br><span class="line">StrictModes yes                    #在ssh登录前检查用户根目录和rhosts文件权限，建议打开</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <tags>
         <tag>Linux</tag>
