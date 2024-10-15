@@ -139,6 +139,20 @@
       </tags>
   </entry>
   <entry>
+    <title>K8S搭建以及常见问题</title>
+    <url>/2024/10/12/K8S%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>K8S搭建以及所遇到的问题</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# kubectl get nodes</span><br><span class="line">The connection to the server localhost:8080 was refused - did you specify the right host or port?</span><br></pre></td></tr></table></figure>
+
+<p>复制config文件到指定目录，重启</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p $HOME/.kube</span><br><span class="line">cp -i /etc/kubernetes/admin.conf $HOME/.kube/config</span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>K8S</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Nginx</title>
     <url>/2024/10/07/Nginx/</url>
     <content><![CDATA[<h1 id="在nginx上配置ssl证书验证"><a href="#在nginx上配置ssl证书验证" class="headerlink" title="在nginx上配置ssl证书验证"></a>在nginx上配置ssl证书验证</h1><span id="more"></span>
@@ -152,20 +166,6 @@
 ]]></content>
       <tags>
         <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>K8S搭建以及常见问题</title>
-    <url>/2024/10/12/K8S%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>K8S搭建以及所遇到的问题</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# kubectl get nodes</span><br><span class="line">The connection to the server localhost:8080 was refused - did you specify the right host or port?</span><br></pre></td></tr></table></figure>
-
-<p>复制config文件到指定目录，重启</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p $HOME/.kube</span><br><span class="line">cp -i /etc/kubernetes/admin.conf $HOME/.kube/config</span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>K8S</tag>
       </tags>
   </entry>
   <entry>
@@ -202,6 +202,18 @@
 ]]></content>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nginx</title>
+    <url>/2024/06/23/centos/</url>
+    <content><![CDATA[<p>nginx</p>
+<span id="more"></span>
+
+<h1 id="nginx安装使用"><a href="#nginx安装使用" class="headerlink" title="nginx安装使用"></a>nginx安装使用</h1><p>&#x2F;etc&#x2F;nginx<br>&#x2F;usr&#x2F;share&#x2F;nginx<br>&#x2F;usr&#x2F;lib64&#x2F;nginx<br>&#x2F;var&#x2F;lib&#x2F;nginx</p>
+]]></content>
+      <tags>
+        <tag>nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -253,18 +265,6 @@
 ]]></content>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>nginx</title>
-    <url>/2024/06/23/centos/</url>
-    <content><![CDATA[<p>nginx</p>
-<span id="more"></span>
-
-<h1 id="nginx安装使用"><a href="#nginx安装使用" class="headerlink" title="nginx安装使用"></a>nginx安装使用</h1><p>&#x2F;etc&#x2F;nginx<br>&#x2F;usr&#x2F;share&#x2F;nginx<br>&#x2F;usr&#x2F;lib64&#x2F;nginx<br>&#x2F;var&#x2F;lib&#x2F;nginx</p>
-]]></content>
-      <tags>
-        <tag>nginx</tag>
       </tags>
   </entry>
   <entry>
