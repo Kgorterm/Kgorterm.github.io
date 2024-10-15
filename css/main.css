@@ -1273,7 +1273,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #f0ff2d;
+  background: #88ff7d;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2658,7 +2658,7 @@ header.header {
   }
 }
 body {
-  background: url("/images/999.jpg");
+  background: url("/images/ww.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
@@ -2694,11 +2694,10 @@ body {
 }
 .post {
   margin-top: 60px;
+  padding: 20px;
   margin-bottom: 60px;
-  padding: 25px;
-  background: rgba(255,255,255,0.9) none repeat scroll !important;
-  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
-  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+  -webkit-box-shadow: 0 0 5px #788072;
+  -moz-box-shadow: 0 0 5px rgba(95,220,255,0.5);
 }
 .footer-inner {
   color: #03e7fb;
