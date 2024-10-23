@@ -142,10 +142,38 @@
     <title>K8S搭建以及常见问题</title>
     <url>/2024/10/12/K8S%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>K8S搭建以及所遇到的问题</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# kubectl get nodes</span><br><span class="line">The connection to the server localhost:8080 was refused - did you specify the right host or port?</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+
+
+<h1 id="Kubernetes上安装Metallb"><a href="#Kubernetes上安装Metallb" class="headerlink" title="Kubernetes上安装Metallb"></a>Kubernetes上安装Metallb</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">kubectl edit configmap -n kube-system kube-proxy</span><br></pre></td></tr></table></figure>
+
+<p>执行上方命令，进入vim面板后，使用“&#x2F;”键进行搜索，然后进行修改</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mode: &quot;&quot;   改为  mode: &quot;ipvs&quot;</span><br><span class="line">strictARP: false 改为  strictARP: true</span><br></pre></td></tr></table></figure>
+
+<p>拉取yaml文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">官方镜像</span></span><br><span class="line">kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.8/config/manifests/metallb-native.yaml</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">国内镜像</span></span><br><span class="line">kubectl apply -f https://raw.githubusercontent.com/xiaohh-me/kubernetes-yaml/main/network/metallb/metallb-native-v0.14.8.yaml</span><br></pre></td></tr></table></figure>
+
+<p>验证是否安装完成(当ready的数量对上和STATUS状态都为Running的时候则安装完成)</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">kubectl get all -o wide -n metallb-system</span><br></pre></td></tr></table></figure>
+
+<p>编辑meatllb.yaml文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim meatllb.yaml#进入vim编辑面板</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apiVersion: metallb.io/v1beta1</span><br><span class="line">kind: IPAddressPool</span><br><span class="line">metadata:</span><br><span class="line">  name: first-pool</span><br><span class="line">  namespace: metallb-system</span><br><span class="line">spec:</span><br><span class="line">  addresses:</span><br><span class="line">  - 172.18.8.83-172.18.8.89</span><br><span class="line">---</span><br><span class="line">apiVersion: metallb.io/v1beta1</span><br><span class="line">kind: L2Advertisement</span><br><span class="line">metadata:</span><br><span class="line">  name: example</span><br><span class="line">  namespace: metallb-system</span><br><span class="line">spec:</span><br><span class="line">  ipAddressPools:</span><br><span class="line">  - first-pool  #此处应该与上面spec的IP地址池同名</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在执行该文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">kubectl apply -f meatllb.yaml</span><br></pre></td></tr></table></figure>
+
+<h1 id="两台ubuntu进行ssh连接"><a href="#两台ubuntu进行ssh连接" class="headerlink" title="两台ubuntu进行ssh连接"></a>两台ubuntu进行ssh连接</h1><h1 id="kubectl获取pod列表时，连接被拒绝"><a href="#kubectl获取pod列表时，连接被拒绝" class="headerlink" title="kubectl获取pod列表时，连接被拒绝"></a>kubectl获取pod列表时，连接被拒绝</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# kubectl get nodes</span><br><span class="line">The connection to the server localhost:8080 was refused - did you specify the right host or port?</span><br></pre></td></tr></table></figure>
 
 <p>复制config文件到指定目录，重启</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p $HOME/.kube</span><br><span class="line">cp -i /etc/kubernetes/admin.conf $HOME/.kube/config</span><br><span class="line">source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+
+<h1 id="主节点生成token"><a href="#主节点生成token" class="headerlink" title="主节点生成token"></a>主节点生成token</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">kubeadm token create --print-join-command</span><br></pre></td></tr></table></figure>
+
+<p>工作节点加入节点时使用生成的token（使用cri-docker搭建集群时需要添加）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">--cri-socket /var/run/cri-dockerd.sock</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <tags>
