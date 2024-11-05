@@ -225,7 +225,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-10-07 14:42:10" itemprop="dateModified" datetime="2024-10-07T14:42:10+08:00">2024-10-07</time>
+      <time title="Modified: 2024-11-05 10:36:45" itemprop="dateModified" datetime="2024-11-05T10:36:45+08:00">2024-11-05</time>
     </span>
 
   
@@ -278,10 +278,32 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">xxx</span></span>()&#123; <span class="built_in">echo</span> 123;<span class="built_in">echo</span> 456; &#125;</span><br><span class="line">xxx</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2024/06/16/bash/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-09-05%20100922.png"></p>
-<p>&#x3D;build_in(内置)</p>
+<p>&#x3D;build_in(内置),如cd,kill,pwd,alias,echo等，可以用“type -a 命令”查看</p>
 <p>&#x3D;hash(哈希)</p>
-<p>&#x3D;path(环境变量)</p>
+<p>&#x3D;$PATH(环境变量),查看环境变量echo $PATH,</p>
+<h4 id="查看帮助信息"><a href="#查看帮助信息" class="headerlink" title="查看帮助信息"></a>查看帮助信息</h4><p>1、man手册</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//1、简单使用</span><br><span class="line">man 命令</span><br><span class="line">//2、详解如下</span><br><span class="line">man 手册名，例如man <span class="built_in">ls</span></span><br><span class="line">搜索：/-h n N</span><br><span class="line">技巧一：按章节来查找，常用的是1（命令用法），5（文本规范），8（系统管理命令）</span><br><span class="line">/usr/bin/passwd <span class="comment">#命令，修改用户密码 man 1 passwd</span></span><br><span class="line">/etc/passwd     <span class="comment">#保存用户信息的文件 man 5 passwd</span></span><br><span class="line">/etc/exports    <span class="comment">#man exports       man 5 exports</span></span><br><span class="line">技巧二：按关键字检索（适合记不住手册）</span><br><span class="line">man -k <span class="string">&quot;_selinux&quot;</span></span><br></pre></td></tr></table></figure>
 
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p>设置主机名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wuwei@master007:~$ hostname</span><br><span class="line">master007</span><br><span class="line">wuwei@master007:~$ vim /etc/hostname <span class="comment">#进入后 “IP XXX”</span></span><br><span class="line">wuwei@master007:~$ hostnamectl set-hostname xxx</span><br></pre></td></tr></table></figure>
+
+<p>设置时间</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">wuwei@master007:~$ <span class="built_in">date</span></span><br><span class="line">2024年 11月 01日 星期五 09:55:00 CST</span><br><span class="line">wuwei@master007:~$ <span class="built_in">date</span> <span class="string">&quot;+%Y-%m-%d %H:%M:%S&quot;</span></span><br><span class="line">2024-11-01 09:55:00</span><br><span class="line">wuwei@master007:~$ <span class="built_in">date</span> -<span class="built_in">set</span> <span class="string">&quot;2000-11-12 13:14:15&quot;</span></span><br><span class="line">2000年 11月 12日 星期一 13:14:15 CST<span class="comment">#目前此处为系统时间</span></span><br><span class="line">wuwei@master007:~$ hwclock <span class="comment">#硬件时间，会多加8h(时区问题)</span></span><br><span class="line">wuwei@master007:~$ hwclock -w <span class="comment">#硬件时间写入系统时间</span></span><br><span class="line">wuwei@master007:~$ hwclock -s <span class="comment">#系统时间写入硬件时间</span></span><br></pre></td></tr></table></figure>
+
+<p>关机</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">init 0</span><br><span class="line">poweroff </span><br><span class="line">shutdown -h now</span><br><span class="line">halt</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件处理"><a href="#文件处理" class="headerlink" title="文件处理"></a>文件处理</h4><h5 id="1、目录结构-文件夹、文件"><a href="#1、目录结构-文件夹、文件" class="headerlink" title="1、目录结构(文件夹、文件)"></a>1、目录结构(文件夹、文件)</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/dev/null <span class="comment">#黑洞文件</span></span><br><span class="line">/dev/cdrom <span class="comment">#光盘文件</span></span><br><span class="line">/etc/hostname <span class="comment">#主机名配置文件</span></span><br><span class="line">/etc/sysconfig/network-scripts/ifcfg-eth0 <span class="comment">#网卡配置文件</span></span><br><span class="line">/etc/sysconfig/network-scripts/ifcfg-ens33 </span><br><span class="line">/etc/resolv.conf <span class="comment">#指定远程DNS的地址</span></span><br><span class="line">/etc/hosts       <span class="comment">#本机的域名解析文件</span></span><br><span class="line"><span class="built_in">cd</span> <span class="comment">#切换文件夹</span></span><br><span class="line"><span class="built_in">pwd</span> <span class="comment">#查看当前目录</span></span><br></pre></td></tr></table></figure>
+
+<p>文件的时间</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l 文件名 <span class="comment">#仅看的是文件的修改时间</span></span><br><span class="line">Linux文件有三种时间，用<span class="built_in">stat</span>查看，例如：<span class="built_in">stat</span> anaconda-ks.cfg</span><br><span class="line">访问时间: atime,查看内容，用<span class="built_in">cat</span>检测</span><br><span class="line">修改时间: mtime,修改内容</span><br><span class="line">改变时间: ctime,修改内容，修改权限等属性，凡是有改动都会变</span><br></pre></td></tr></table></figure>
+
+<p>文件的扩展名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Linux文件没有扩展名</span><br><span class="line">//方法一：</span><br><span class="line"><span class="built_in">ls</span> -l 文件名  //看第一个字符</span><br><span class="line">- 普通文件（文本文件，二进制，压缩文件，电影，图片...），例如：/bin/ls</span><br><span class="line">d 目录文件（蓝色），例如/home/</span><br><span class="line">b 设备文件（块设备）存储设备硬盘，U盘，例如：/dev/sda</span><br><span class="line">c 设备文件（字符设备）打印机，例如：终端/dev/tty1</span><br><span class="line">s 套接字文件，例如：/run/rpcbind.sock</span><br><span class="line">p 管道文件，例如：/run/systemd/initctl/fifo</span><br><span class="line">l 链接文件（淡蓝色）,例如：/bin</span><br><span class="line">ps:通过颜色判断文件的类型是错误的！！！</span><br><span class="line">//方法二：</span><br><span class="line">[root@xxx ~]<span class="comment"># file /etc/grub.conf</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="2、路径"><a href="#2、路径" class="headerlink" title="2、路径"></a>2、路径</h5><h5 id="3、文件处理"><a href="#3、文件处理" class="headerlink" title="3、文件处理"></a>3、文件处理</h5>
       
     </div>
 

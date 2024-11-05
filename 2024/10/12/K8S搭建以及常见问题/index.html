@@ -27,7 +27,7 @@
 <meta property="og:description" content="K8S搭建以及所遇到的问题">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-12T14:18:32.000Z">
-<meta property="article:modified_time" content="2024-10-17T14:51:02.269Z">
+<meta property="article:modified_time" content="2024-10-24T03:00:09.021Z">
 <meta property="article:author" content="枝江最強聖女と超高校级の可愛!嘉然Dianaです!">
 <meta property="article:tag" content="K8S">
 <meta name="twitter:card" content="summary">
@@ -139,7 +139,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kubernetes%E4%B8%8A%E5%AE%89%E8%A3%85Metallb"><span class="nav-number">1.</span> <span class="nav-text">Kubernetes上安装Metallb</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%A4%E5%8F%B0ubuntu%E8%BF%9B%E8%A1%8Cssh%E8%BF%9E%E6%8E%A5"><span class="nav-number">2.</span> <span class="nav-text">两台ubuntu进行ssh连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kubectl%E8%8E%B7%E5%8F%96pod%E5%88%97%E8%A1%A8%E6%97%B6%EF%BC%8C%E8%BF%9E%E6%8E%A5%E8%A2%AB%E6%8B%92%E7%BB%9D"><span class="nav-number">3.</span> <span class="nav-text">kubectl获取pod列表时，连接被拒绝</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E8%8A%82%E7%82%B9%E7%94%9F%E6%88%90token"><span class="nav-number">4.</span> <span class="nav-text">主节点生成token</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kubernetes%E4%B8%8A%E5%AE%89%E8%A3%85Metallb"><span class="nav-number">1.</span> <span class="nav-text">Kubernetes上安装Metallb</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%A4%E5%8F%B0ubuntu%E8%BF%9B%E8%A1%8Cssh%E8%BF%9E%E6%8E%A5"><span class="nav-number">2.</span> <span class="nav-text">两台ubuntu进行ssh连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kubectl%E8%8E%B7%E5%8F%96pod%E5%88%97%E8%A1%A8%E6%97%B6%EF%BC%8C%E8%BF%9E%E6%8E%A5%E8%A2%AB%E6%8B%92%E7%BB%9D"><span class="nav-number">3.</span> <span class="nav-text">kubectl获取pod列表时，连接被拒绝</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E8%8A%82%E7%82%B9%E7%94%9F%E6%88%90token"><span class="nav-number">4.</span> <span class="nav-text">主节点生成token</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%93%E5%B7%A5%E4%BD%9C%E8%8A%82%E7%82%B9%E5%8A%A0%E5%85%A5%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E4%B8%BB%E8%8A%82%E7%82%B9%E6%97%B6"><span class="nav-number">5.</span> <span class="nav-text">当工作节点加入一个新的主节点时</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -230,7 +230,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-10-17 22:51:02" itemprop="dateModified" datetime="2024-10-17T22:51:02+08:00">2024-10-17</time>
+      <time title="Modified: 2024-10-24 11:00:09" itemprop="dateModified" datetime="2024-10-24T11:00:09+08:00">2024-10-24</time>
     </span>
 
   
@@ -275,6 +275,12 @@
 
 <p>工作节点加入节点时使用生成的token（使用cri-docker搭建集群时需要添加）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--cri-socket /var/run/cri-dockerd.sock</span><br></pre></td></tr></table></figure>
+
+<h1 id="当工作节点加入一个新的主节点时"><a href="#当工作节点加入一个新的主节点时" class="headerlink" title="当工作节点加入一个新的主节点时"></a>当工作节点加入一个新的主节点时</h1><p>彻底卸载kubeadm、kubectl、kubelet，再重新安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge kubeadm kubectl kubelet kubernetes-cni kube*   #删除软件包</span><br><span class="line">sudo apt-get autoremove</span><br><span class="line">sudo yum remove -y kubeadm kubectl kubelet kubernetes-cni kube*   </span><br><span class="line">sudo yum autoremove -y</span><br><span class="line">systemctl stop kubelet                                            #停止服务清理配置</span><br><span class="line">systemctl disable kubelet</span><br><span class="line">rm -rf /etc/systemd/system/kubelet.service</span><br><span class="line">rm -rf /etc/systemd/system/kube*</span><br><span class="line">sudo rm -rf ~/.kube                                                #清理kubernetes配置</span><br><span class="line">sudo rm -rf /etc/kubernetes/</span><br><span class="line">sudo rm -rf /var/lib/kube*</span><br></pre></td></tr></table></figure>
+
+<p>重新安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">apt-get update &amp;&amp; apt-get install -y apt-transport-https</span><br><span class="line">curl -fsSL https://mirrors.aliyun.com/kubernetes-new/core/stable/v1.29/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg</span><br><span class="line">echo &quot;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://mirrors.aliyun.com/kubernetes-new/core/stable/v1.29/deb/ /&quot; | tee /etc/apt/sources.list.d/kubernetes.list</span><br><span class="line">apt-get update</span><br><span class="line">apt-get install -y kubelet kubeadm kubectl</span><br><span class="line">apt-mark hold kubelet kubeadm kubectl  # 锁定版本,apt upgrade时不会更新</span><br></pre></td></tr></table></figure>
 
 
     </div>
