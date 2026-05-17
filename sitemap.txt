@@ -1,5 +1,5 @@
-https://kgorterm.github.io/2026/05/16/Hexo-NexT-8.27-%E6%B7%BB%E5%8A%A0%E9%BC%A0%E6%A0%87%E7%89%B9%E6%95%88/
 https://kgorterm.github.io/2026/05/16/%E5%8D%9A%E5%AE%A2next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/
+https://kgorterm.github.io/2026/05/16/Hexo-NexT-8.27-%E6%B7%BB%E5%8A%A0%E9%BC%A0%E6%A0%87%E7%89%B9%E6%95%88/
 https://kgorterm.github.io/2003/05/02/hello-world/
 https://kgorterm.github.io/about/index.html
 https://kgorterm.github.io/tags/index.html
