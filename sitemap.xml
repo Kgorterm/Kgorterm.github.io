@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://kgorter.github.io/2003/05/02/hello-world/</loc>
+    <loc>https://kgorterm.github.io/2003/05/02/hello-world/</loc>
     
     <lastmod>2026-05-17</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://kgorter.github.io/2026/05/16/%E5%8D%9A%E5%AE%A2next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</loc>
+    <loc>https://kgorterm.github.io/2026/05/16/%E5%8D%9A%E5%AE%A2next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</loc>
     
     <lastmod>2026-05-17</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://kgorter.github.io/2026/05/16/Hexo-NexT-8.27-%E6%B7%BB%E5%8A%A0%E9%BC%A0%E6%A0%87%E7%89%B9%E6%95%88/</loc>
+    <loc>https://kgorterm.github.io/2026/05/16/Hexo-NexT-8.27-%E6%B7%BB%E5%8A%A0%E9%BC%A0%E6%A0%87%E7%89%B9%E6%95%88/</loc>
     
     <lastmod>2026-05-17</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://kgorter.github.io/about/index.html</loc>
+    <loc>https://kgorterm.github.io/about/index.html</loc>
     
     <lastmod>2026-05-12</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://kgorter.github.io/tags/index.html</loc>
+    <loc>https://kgorterm.github.io/tags/index.html</loc>
     
     <lastmod>2026-05-12</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://kgorter.github.io/friends/index.html</loc>
+    <loc>https://kgorterm.github.io/friends/index.html</loc>
     
     <lastmod>2026-05-12</lastmod>
     
@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://kgorter.github.io/categories/index.html</loc>
+    <loc>https://kgorterm.github.io/categories/index.html</loc>
     
     <lastmod>2026-05-12</lastmod>
     
@@ -66,7 +66,7 @@
   
 
   <url>
-    <loc>https://kgorter.github.io/</loc>
+    <loc>https://kgorterm.github.io/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -74,42 +74,42 @@
 
   
   <url>
-    <loc>https://kgorter.github.io/tags/boke/</loc>
+    <loc>https://kgorterm.github.io/tags/hexo/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://kgorter.github.io/tags/hexo/</loc>
+    <loc>https://kgorterm.github.io/tags/next/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://kgorter.github.io/tags/next/</loc>
+    <loc>https://kgorterm.github.io/tags/%E7%BE%8E%E5%8C%96/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://kgorter.github.io/tags/%E7%BE%8E%E5%8C%96/</loc>
+    <loc>https://kgorterm.github.io/tags/javascript/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://kgorter.github.io/tags/javascript/</loc>
+    <loc>https://kgorterm.github.io/tags/boke/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://kgorter.github.io/tags/bug/</loc>
+    <loc>https://kgorterm.github.io/tags/bug/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -118,7 +118,7 @@
 
   
   <url>
-    <loc>https://kgorter.github.io/categories/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</loc>
+    <loc>https://kgorterm.github.io/categories/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
