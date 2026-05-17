@@ -1726,7 +1726,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #eecfe3;
+    background: #ffece8;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3353,3 +3353,29 @@ header.header {
     padding: 10px 12px;
   }
 }
+.main-inner.index {
+  position: relative;
+  z-index: 1;
+}
+.main-inner.index::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url("/images/your-wallpaper.jpg") center/cover fixed no-repeat;
+  background-size: cover;
+  opacity: 0.95;
+  pointer-events: none;
+  z-index: -2;
+}
+.main-inner.index::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+  pointer-events: none;
+  z-index: -1;
+}
+/*
+  替换上面的 /images/your-wallpaper.jpg 为你的图片路径。
+  也可以改成其他效果，比如不同的叠加颜色或更低的透明度。
+*/
