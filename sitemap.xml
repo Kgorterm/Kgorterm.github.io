@@ -74,6 +74,13 @@
 
   
   <url>
+    <loc>https://kgorterm.github.io/tags/boke/</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://kgorterm.github.io/tags/hexo/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -96,13 +103,6 @@
   
   <url>
     <loc>https://kgorterm.github.io/tags/javascript/</loc>
-    <lastmod>2026-05-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://kgorterm.github.io/tags/boke/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

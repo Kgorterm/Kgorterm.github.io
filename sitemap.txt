@@ -6,10 +6,10 @@ https://kgorterm.github.io/tags/index.html
 https://kgorterm.github.io/friends/index.html
 https://kgorterm.github.io/categories/index.html
 https://kgorterm.github.io/
+https://kgorterm.github.io/tags/boke/
 https://kgorterm.github.io/tags/hexo/
 https://kgorterm.github.io/tags/next/
 https://kgorterm.github.io/tags/%E7%BE%8E%E5%8C%96/
 https://kgorterm.github.io/tags/javascript/
-https://kgorterm.github.io/tags/boke/
 https://kgorterm.github.io/tags/bug/
 https://kgorterm.github.io/categories/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/
