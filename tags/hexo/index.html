@@ -140,6 +140,7 @@
     </div>
   </div>
 
+
 </header>
         
   
@@ -292,6 +293,81 @@
   
     <script src="/js/cursor/cherry.js"></script>
   
+<script>
+(function() {
+  const config = {
+    particleCount: 70,
+    maxRadius: 2.3,
+    speed: 0.6,
+    drift: 0.05,
+    hue: 210,
+    saturation: 80,
+    lightness: 75,
+    alpha: 0.7
+  };
+
+  const canvas = document.querySelector('.hero-particles');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let width = 0;
+  let height = 0;
+  let rafId;
+
+  function resize() {
+    width = canvas.offsetWidth;
+    height = canvas.offsetHeight;
+    canvas.width = width * window.devicePixelRatio;
+    canvas.height = height * window.devicePixelRatio;
+    ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+  }
+
+  function createParticles() {
+    particles = Array.from({ length: config.particleCount }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      r: Math.random() * config.maxRadius + 0.4,
+      vx: (Math.random() - 0.5) * config.speed,
+      vy: Math.random() * config.speed + 0.1,
+      alpha: Math.random() * 0.4 + 0.2,
+      drift: (Math.random() - 0.5) * config.drift
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+    particles.forEach(p => {
+      p.x += p.vx + p.drift;
+      p.y += p.vy;
+      if (p.x < -p.r) p.x = width + p.r;
+      if (p.x > width + p.r) p.x = -p.r;
+      if (p.y > height + p.r) p.y = -p.r;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `hsla(${config.hue}, ${config.saturation}%, ${config.lightness}%, ${p.alpha})`;
+      ctx.fill();
+    });
+  }
+
+  function loop() {
+    draw();
+    rafId = requestAnimationFrame(loop);
+  }
+
+  resize();
+  createParticles();
+  loop();
+
+  window.addEventListener('resize', function() {
+    cancelAnimationFrame(rafId);
+    resize();
+    createParticles();
+    loop();
+  });
+})();
+</script>
 
 </body>
 </html>
