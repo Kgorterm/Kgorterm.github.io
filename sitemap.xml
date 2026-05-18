@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://kgorterm.github.io/2026/05/18/%E8%AE%BE%E5%A4%87%E8%BF%90%E7%BB%B4-%E6%9C%BA%E7%AE%B1%E6%8A%A5%E8%AD%A6%EF%BC%88%E4%B8%89%E7%9F%AD%E4%B8%80%E9%95%BF%EF%BC%89/</loc>
+    
+    <lastmod>2026-05-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://kgorterm.github.io/2026/05/16/%E5%8D%9A%E5%AE%A2next%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</loc>
     
     <lastmod>2026-05-17</lastmod>
@@ -67,7 +76,7 @@
 
   <url>
     <loc>https://kgorterm.github.io/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -75,42 +84,56 @@
   
   <url>
     <loc>https://kgorterm.github.io/tags/boke/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://kgorterm.github.io/tags/next/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://kgorterm.github.io/tags/bug/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://kgorterm.github.io/tags/hexo/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://kgorterm.github.io/tags/%E7%BE%8E%E5%8C%96/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://kgorterm.github.io/tags/javascript/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://kgorterm.github.io/tags/%E8%BF%90%E7%BB%B4/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://kgorterm.github.io/tags/%E6%A1%8C%E9%9D%A2/</loc>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -119,7 +142,7 @@
   
   <url>
     <loc>https://kgorterm.github.io/categories/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
