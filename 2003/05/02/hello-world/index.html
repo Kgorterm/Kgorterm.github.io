@@ -69,6 +69,17 @@
 
 
 
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  try{
+    const el = document.querySelector('script.next-config[data-name="page"]');
+    if (el){
+      const cfg = JSON.parse(el.textContent || el.innerText || '{}');
+      if (cfg && cfg.isHome && document.body) document.body.classList.add('is-home');
+    }
+  }catch(e){/* ignore */}
+});
+</script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -90,13 +101,12 @@
   </div>
 
   <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">champion</p>
-      <i class="logo-line"></i>
-    </a>
-      <p class="site-subtitle" itemprop="description">千里之行，始于足下</p>
+      <a href="/" class="brand" rel="start">
+        <i class="logo-line"></i>
+        <p class="site-title">champion</p>
+        <i class="logo-line"></i>
+      </a>
+        <p class="site-subtitle" itemprop="description">千里之行，始于足下</p>
   </div>
 
   <div class="site-nav-right">

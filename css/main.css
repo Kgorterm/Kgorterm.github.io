@@ -1726,7 +1726,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #f709d9;
+    background: #d2aa57;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3397,6 +3397,10 @@ body::after {
     animation: none;
   }
 }
+body::before,
+body::after {
+  filter: brightness(0.85) contrast(1.02);
+}
 .hero {
   height: 100vh;
   width: 100%;
@@ -3411,6 +3415,7 @@ body::after {
   right: 0;
   z-index: 2;
   overflow: hidden;
+  pointer-events: none;
 }
 .hero .hero-particles {
   position: absolute;
@@ -3419,6 +3424,7 @@ body::after {
   height: 100%;
   display: block;
   z-index: 1;
+  pointer-events: none;
 }
 .hero .hero-inner {
   position: relative;
@@ -3426,11 +3432,26 @@ body::after {
   max-width: 900px;
   padding: 0 20px;
 }
-.hero .hero-title {
+aside.sidebar {
+  position: relative;
+  z-index: 3;
+}
+aside.sidebar,
+.sidebar-panel,
+.sidebar-panel.site-overview-wrap {
+  background: rgba(255,255,255,0.92);
+  filter: brightness(1);
+  color: #333;
+}
+.main-inner.index {
+  position: relative;
+  z-index: 2;
+}
+.main-inner.index .hero-title {
   font-size: 3rem;
   margin: 0;
 }
-.hero .hero-subtitle {
+.main-inner.index .hero-subtitle {
   margin-top: 0.5rem;
   font-size: 1.25rem;
 }
@@ -3462,6 +3483,10 @@ body::after {
 }
 .is-home .main {
   padding-top: 64px;
+}
+.is-home .site-brand-container .site-title,
+.is-home .site-brand-container .site-subtitle {
+  display: none;
 }
 @keyframes background-fade {
   0%, 40% {

@@ -67,6 +67,17 @@
 
 
 
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  try{
+    const el = document.querySelector('script.next-config[data-name="page"]');
+    if (el){
+      const cfg = JSON.parse(el.textContent || el.innerText || '{}');
+      if (cfg && cfg.isHome && document.body) document.body.classList.add('is-home');
+    }
+  }catch(e){/* ignore */}
+});
+</script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -88,13 +99,6 @@
   </div>
 
   <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">champion</h1>
-      <i class="logo-line"></i>
-    </a>
-      <p class="site-subtitle" itemprop="description">千里之行，始于足下</p>
   </div>
 
   <div class="site-nav-right">
@@ -143,9 +147,7 @@
   <div class="hero">
     <canvas class="hero-particles" aria-hidden="true"></canvas>
     <div class="hero-inner">
-      <h1 class="hero-title">champion</h1>
-        <p class="hero-subtitle">千里之行，始于足下</p>
-      <button class="down-arrow" aria-label="Scroll down" onclick="document.querySelector('.main-inner').scrollIntoView({behavior:'smooth'});">▾</button>
+      
     </div>
   </div>
 
@@ -244,7 +246,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2026/05/20/%E5%A5%BD%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/" class="post-title-link" itemprop="url">好用的工具</a>
+          <a href="/2026/05/20/%E5%A5%BD%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/" class="post-title-link" itemprop="url">实用工具及网站</a>
         </h2>
 
         <div class="post-meta-container">
@@ -254,9 +256,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2026-05-20 21:26:58 / 修改时间：21:41:03" itemprop="dateCreated datePublished" datetime="2026-05-20T21:26:58+08:00">2026-05-20</time>
+      <time title="创建时间：2026-05-20 21:26:58" itemprop="dateCreated datePublished" datetime="2026-05-20T21:26:58+08:00">2026-05-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-05-22 09:33:33" itemprop="dateModified" datetime="2026-05-22T09:33:33+08:00">2026-05-22</time>
     </span>
 
   

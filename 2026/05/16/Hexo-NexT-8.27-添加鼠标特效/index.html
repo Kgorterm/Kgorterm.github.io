@@ -75,6 +75,17 @@
 
 
 
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  try{
+    const el = document.querySelector('script.next-config[data-name="page"]');
+    if (el){
+      const cfg = JSON.parse(el.textContent || el.innerText || '{}');
+      if (cfg && cfg.isHome && document.body) document.body.classList.add('is-home');
+    }
+  }catch(e){/* ignore */}
+});
+</script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -96,13 +107,12 @@
   </div>
 
   <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">champion</p>
-      <i class="logo-line"></i>
-    </a>
-      <p class="site-subtitle" itemprop="description">千里之行，始于足下</p>
+      <a href="/" class="brand" rel="start">
+        <i class="logo-line"></i>
+        <p class="site-title">champion</p>
+        <i class="logo-line"></i>
+      </a>
+        <p class="site-subtitle" itemprop="description">千里之行，始于足下</p>
   </div>
 
   <div class="site-nav-right">
@@ -356,8 +366,8 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/next/" rel="tag"><i class="fa fa-tag"></i> next</a>
               <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+              <a href="/tags/next/" rel="tag"><i class="fa fa-tag"></i> next</a>
               <a href="/tags/%E7%BE%8E%E5%8C%96/" rel="tag"><i class="fa fa-tag"></i> 美化</a>
               <a href="/tags/javascript/" rel="tag"><i class="fa fa-tag"></i> javascript</a>
           </div>

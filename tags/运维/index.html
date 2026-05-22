@@ -67,6 +67,17 @@
 
 
 
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  try{
+    const el = document.querySelector('script.next-config[data-name="page"]');
+    if (el){
+      const cfg = JSON.parse(el.textContent || el.innerText || '{}');
+      if (cfg && cfg.isHome && document.body) document.body.classList.add('is-home');
+    }
+  }catch(e){/* ignore */}
+});
+</script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -88,13 +99,12 @@
   </div>
 
   <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">champion</p>
-      <i class="logo-line"></i>
-    </a>
-      <p class="site-subtitle" itemprop="description">千里之行，始于足下</p>
+      <a href="/" class="brand" rel="start">
+        <i class="logo-line"></i>
+        <p class="site-title">champion</p>
+        <i class="logo-line"></i>
+      </a>
+        <p class="site-subtitle" itemprop="description">千里之行，始于足下</p>
   </div>
 
   <div class="site-nav-right">
@@ -239,7 +249,7 @@
 
       <div class="post-title">
           <a class="post-title-link" href="/2026/05/20/%E5%A5%BD%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/" itemprop="url">
-            <span itemprop="name">好用的工具</span>
+            <span itemprop="name">实用工具及网站</span>
           </a>
       </div>
 
