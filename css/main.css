@@ -1433,7 +1433,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #210f40;
+    background: #a77aba;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3041,7 +3041,10 @@ body::after {
   }
 }
 body {
+  position: static;
+  inset: auto;
   pointer-events: auto;
+  z-index: auto;
 }
 /*.main-inner.index
   position relative
