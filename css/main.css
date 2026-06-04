@@ -226,7 +226,7 @@ body {
   box-sizing: border-box;
   color: var(--text-color);
   font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  font-size: 1em;
+  font-size: 0.8em;
   line-height: 2;
   min-height: 100%;
   position: relative;
@@ -1584,7 +1584,7 @@ pre code {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-family: LXGW WenKai, Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   line-height: 1.5;
@@ -1726,7 +1726,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #87b939;
+    background: #bb5b6b;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
